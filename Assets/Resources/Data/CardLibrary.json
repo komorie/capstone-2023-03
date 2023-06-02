@@ -27,7 +27,7 @@
   "damage": -1,
   "times": -1,
   "special": "Shield",
-  "special_stat": 0
+  "special_stat": 5
  },
  {
   "index": 2,
@@ -252,7 +252,7 @@
   "damage": 3,
   "times": 0,
   "special": "Ice",
-  "special_stat": 0
+  "special_stat": 2
  },
  {
   "index": 17,
@@ -326,8 +326,8 @@
   "target": "Self",
   "damage": -1,
   "times": -1,
-  "special": "None",
-  "special_stat": 0
+  "special": "Shield",
+  "special_stat": 12
  },
  {
   "index": 22,
@@ -368,11 +368,11 @@
   "type": "Skill",
   "attack_type": "None",
   "attribute": "Ice",
-  "target": "One",
+  "target": "Self",
   "damage": -1,
   "times": -1,
-  "special": "None",
-  "special_stat": 0
+  "special": "Shield",
+  "special_stat": 10
  },
  {
   "index": 25,
@@ -386,8 +386,8 @@
   "target": "Self",
   "damage": -1,
   "times": -1,
-  "special": "None",
-  "special_stat": 0
+  "special": "Shield",
+  "special_stat": 8
  },
  {
   "index": 26,
@@ -1067,7 +1067,7 @@
  {
   "index": 136,
   "name": "전투형 부하",
-  "description": " 무작위 적 1기 6 데미지 및 화상 2 부여",
+  "description": "무작위 적 1기 6 데미지 및 화상 2 부여",
   "cost": 0,
   "rarity": 0,
   "type": "Pirate3",
