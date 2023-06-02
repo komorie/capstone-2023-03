@@ -1255,60 +1255,16 @@ public class EnemyPattern : MonoBehaviour
                 switch (pat)
                 {
                     case 1:
-                        if (stage == 1)
-                        {
-                            Battle.ChangeCurrentShield(-6, num);
-                        }
-                        else if (stage == 2)
-                        {
-                            Battle.ChangeCurrentShield(-8, num);
-                        }
-                        else if (stage == 3)
-                        {
-                            Battle.ChangeCurrentShield(-10, num);
-                        }
+                        Battle.ChangeCurrentShield(-20, num);
                         break;
                     case 2:
-                        if (stage == 1)
-                        {
-                            Battle.ChangeCurrentShield(-6, num);
-                        }
-                        else if (stage == 2)
-                        {
-                            Battle.ChangeCurrentShield(-8, num);
-                        }
-                        else if (stage == 3)
-                        {
-                            Battle.ChangeCurrentShield(-10, num);
-                        }
+                        Battle.ChangeCurrentShield(-20, num);
                         break;
                     case 3:
-                        if (stage == 1)
-                        {
-                            Battle.ChangeCurrentShield(-6, num);
-                        }
-                        else if (stage == 2)
-                        {
-                            Battle.ChangeCurrentShield(-8, num);
-                        }
-                        else if (stage == 3)
-                        {
-                            Battle.ChangeCurrentShield(-10, num);
-                        }
+                        Battle.ChangeCurrentShield(-20, num);
                         break;
                     case 4:
-                        if (stage == 1)
-                        {
-                            Battle.ChangeCurrentShield(-6, num);
-                        }
-                        else if (stage == 2)
-                        {
-                            Battle.ChangeCurrentShield(-8, num);
-                        }
-                        else if (stage == 3)
-                        {
-                            Battle.ChangeCurrentShield(-10, num);
-                        }
+                        Battle.ChangeCurrentShield(-20, num);
                         break;
                 }
                 break;

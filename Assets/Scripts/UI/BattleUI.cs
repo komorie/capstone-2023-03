@@ -287,7 +287,7 @@ public class BattleUI : BaseUI
                 if (EnemyData.Instance.Pat[i] != 0)
                 {
                     //Enemy2Text.text = EnemyData.Instance.PatText[i];
-                    Enemy1Text.text = "공격 " + (4 + (stage * 2)).ToString();
+                    Enemy2Text.text = "공격 " + (4 + (stage * 2)).ToString();
                 }
                 else
                 {
@@ -299,7 +299,7 @@ public class BattleUI : BaseUI
                 if (EnemyData.Instance.Pat[i] != 0)
                 {
                     //Enemy3Text.text = EnemyData.Instance.PatText[i];
-                    Enemy1Text.text = "공격 " + (4 + (stage * 2)).ToString();
+                    Enemy3Text.text = "공격 " + (4 + (stage * 2)).ToString();
                 }
                 else
                 {
@@ -380,63 +380,72 @@ public class BattleUI : BaseUI
         EnemyData.Instance.Reset();
         if (stage < 4)
         {
-            for (int i = 1; i < stage + 1; i++)
+            if(EnemyInfo < 100)
             {
-                int random = EnemyInfo == 0 ? Random.Range(0, 2 + stage) : Random.Range(0, 2);
-                Transform EnemyNum = transform.Find("Enemy").Find("Enemy" + i.ToString());
-                GameObject EnemyUI;
-                if (EnemyInfo == 0)
+                for (int i = 1; i < stage + 1; i++)
                 {
-                    EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[random], EnemyNum);
-                    EnemyData.Instance.init(i, AllEnemyData.Instance.NoneEnemyNames[random], stage);
-                }
-                else if (EnemyInfo == 1)
-                {
-                    EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[random], EnemyNum);
-                    EnemyData.Instance.init(i, AllEnemyData.Instance.PirateEnemyNames[random], stage);
-                }
-                else if (EnemyInfo == 2)
-                {
-                    EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[random], EnemyNum);
-                    EnemyData.Instance.init(i, AllEnemyData.Instance.DruidEnemyNames[random], stage);
-                }
-                else if (EnemyInfo == 3)
-                {
-                    EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[random], EnemyNum);
-                    EnemyData.Instance.init(i, AllEnemyData.Instance.PriestEnemyNames[random], stage);
-                }
-                else if (EnemyInfo == 4)
-                {
-                    EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[random], EnemyNum);
-                    EnemyData.Instance.init(i, AllEnemyData.Instance.MechanicEnemyNames[random], stage);
-                }
+                    int random = EnemyInfo == 0 ? Random.Range(0, 2 + stage) : Random.Range(0, 2);
+                    Transform EnemyNum = transform.Find("Enemy").Find("Enemy" + i.ToString());
+                    GameObject EnemyUI;
+                    if (EnemyInfo == 0)
+                    {
+                        EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[random], EnemyNum);
+                        EnemyData.Instance.init(i, AllEnemyData.Instance.NoneEnemyNames[random], stage);
+                    }
+                    else if (EnemyInfo == 1)
+                    {
+                        EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[random], EnemyNum);
+                        EnemyData.Instance.init(i, AllEnemyData.Instance.PirateEnemyNames[random], stage);
+                    }
+                    else if (EnemyInfo == 2)
+                    {
+                        EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[random], EnemyNum);
+                        EnemyData.Instance.init(i, AllEnemyData.Instance.DruidEnemyNames[random], stage);
+                    }
+                    else if (EnemyInfo == 3)
+                    {
+                        EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[random], EnemyNum);
+                        EnemyData.Instance.init(i, AllEnemyData.Instance.PriestEnemyNames[random], stage);
+                    }
+                    else if (EnemyInfo == 4)
+                    {
+                        EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[random], EnemyNum);
+                        EnemyData.Instance.init(i, AllEnemyData.Instance.MechanicEnemyNames[random], stage);
+                    }
 
-                else if (EnemyInfo == 100)
+                    EnemyNum.GetChild(1).Find("HealthBar").GetChild(0).GetComponent<HealthBarEnemyUI>().init(i);
+                    EnemyNum.GetChild(1).Find("HealthBar").GetChild(1).GetComponent<ShieldBarEnemyUI>().init(i);
+                    EnemyNum.GetChild(1).Find("EnemyStat").GetComponent<EnemyStatUI>().init(i);
+                }
+            }
+            else
+            {
+                int ran = EnemyInfo == 0 ? Random.Range(0, 2 + stage) : Random.Range(0, 2);
+                Transform EnemyNum = transform.Find("Enemy").Find("Enemy1");
+                GameObject EnemyUI;
+                if (EnemyInfo == 100)
                 {
                     EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/PirateBoss", EnemyNum);
-                    EnemyData.Instance.init(i, "PirateBoss", stage);
+                    EnemyData.Instance.init(1, "PirateBoss", stage);
                 }
                 else if (EnemyInfo == 101)
                 {
-                    EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[random], EnemyNum);
-                    EnemyData.Instance.init(i, "DruidBoss", stage);
+                    EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[ran], EnemyNum);
+                    EnemyData.Instance.init(1, "DruidBoss", stage);
                 }
                 else if (EnemyInfo == 102)
                 {
-                    EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[random], EnemyNum);
-                    EnemyData.Instance.init(i, "PriestBoss", stage);
+                    EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[ran], EnemyNum);
+                    EnemyData.Instance.init(1, "PriestBoss", stage);
                 }
                 else if (EnemyInfo == 103)
                 {
-                    EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[random], EnemyNum);
-                    EnemyData.Instance.init(i, "MechanicBoss", stage);
+                    EnemyUI = AssetLoader.Instance.Instantiate($"Images/EnemyUI/" + AllEnemyData.Instance.NoneEnemyNames[ran], EnemyNum);
+                    EnemyData.Instance.init(1, "MechanicBoss", stage);
                 }
-                
-
-                EnemyNum.GetChild(1).Find("HealthBar").GetChild(0).GetComponent<HealthBarEnemyUI>().init(i);
-                EnemyNum.GetChild(1).Find("HealthBar").GetChild(1).GetComponent<ShieldBarEnemyUI>().init(i);
-                EnemyNum.GetChild(1).Find("EnemyStat").GetComponent<EnemyStatUI>().init(i);
-
+                EnemyNum.GetChild(1).Find("HealthBar").GetChild(0).GetComponent<HealthBarEnemyUI>().init(1);
+                EnemyNum.GetChild(1).Find("HealthBar").GetChild(1).GetComponent<ShieldBarEnemyUI>().init(1);
+                EnemyNum.GetChild(1).Find("EnemyStat").GetComponent<EnemyStatUI>().init(1);
             }
         }
         else
