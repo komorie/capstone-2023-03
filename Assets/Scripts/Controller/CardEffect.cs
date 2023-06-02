@@ -148,11 +148,7 @@ public class CardEffect : MonoBehaviour
                 {
                     Battle.ChangeCurrentShield(5, -1);
                 }
-                else if (index == 33)
-                {
-                    battleUI.Draw();
-                }
-                else if (index == 36)
+                else if (index == 26)
                 {
                     Battle.ChangeCurrentShield(15, -1);
                 }
@@ -168,6 +164,10 @@ public class CardEffect : MonoBehaviour
                         BattleData.Instance.burn = true;
                         BattleData.Instance.Int += 2;
                         break;
+                }
+                if(index == 25)
+                {
+                    battleUI.Draw();
                 }
             }
         }
