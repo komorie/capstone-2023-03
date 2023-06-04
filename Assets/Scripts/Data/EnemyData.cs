@@ -36,6 +36,7 @@ public class EnemyData : Singleton<EnemyData>
     protected override void Awake()
     {
         base.Awake();
+        DontDestroyOnLoad(this);
         EnemyList = new List<EnemyStruct> { Enemy1, Enemy2, Enemy3 };
     }
 

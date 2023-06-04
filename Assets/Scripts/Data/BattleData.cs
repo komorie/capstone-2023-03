@@ -49,7 +49,7 @@ public class BattleData : Singleton<BattleData>
     protected override void Awake()
     {
         base.Awake();
-
+        DontDestroyOnLoad(this);
         if (GameObject.Find("PlayerData") != null)
         {
             playerData = GameObject.Find("PlayerData").GetComponent<PlayerData>();
