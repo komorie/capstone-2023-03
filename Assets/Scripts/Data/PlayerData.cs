@@ -18,34 +18,19 @@ public class PlayerData : Singleton<PlayerData>
 
     public int ChannelLevel {
         get { return channelLevel; }
-        set 
-        {
-            channelLevel = value;
-
-            OnDataChange?.Invoke();
-        }
-
+        set { channelLevel = value; OnPlayerDataChange?.Invoke(); }
     }  //채널 레벨
 
     public int Viewers {
         get { return viewers; }
-        set
-        {
-            viewers = value;
-            OnDataChange?.Invoke();
-        }
+        set { viewers = value; OnPlayerDataChange?.Invoke(); }
     }  //애청자 수
 
     public float CurrentHp
     {
         get { return currentHp; }
-        set
-        {
-            currentHp = value;
-            OnDataChange?.Invoke();
-        }
+        set { currentHp = value; OnPlayerDataChange?.Invoke(); }
     }  //현재 체력
-
     public float MaxHp { //최대 체력
         get 
         {
@@ -63,34 +48,26 @@ public class PlayerData : Singleton<PlayerData>
         set 
         {
             maxHp = value;
-            OnDataChange?.Invoke();
+            OnPlayerDataChange?.Invoke();
         }
     }
 
     public int Money
     {
         get { return money; }
-        set
-        {
-            money = value;
-            OnDataChange?.Invoke();
-        }
+        set { money = value; OnPlayerDataChange?.Invoke(); }
     }  //현재 돈
 
     public int Energy
     {
         get { return energy; }
-        set
-        {
-            energy = value;
-            OnDataChange?.Invoke();
-        }
+        set { energy = value; OnPlayerDataChange?.Invoke(); }
     } //현재 에너지
 
     public List<CardStruct> Deck { get; set; }
 
     //데이터 변경 시 발생시킬 이벤트
-    public event Action OnDataChange;
+    public event Action OnPlayerDataChange;
 
     protected override void Awake()
     {
@@ -99,31 +76,31 @@ public class PlayerData : Singleton<PlayerData>
     }
 
     //다른 데이터 변경은 자동으로 감지되므로 덱이 바뀌었을 때만 호출하기
-    public void DeckChanged()
+    public void OnPlayerDataChanged()
     {
-        OnDataChange?.Invoke();
+        OnPlayerDataChange?.Invoke();
     }
 
 
-    public void LoadPlayerData()
+    public void InitPlayerData()
     {
         //초기 데이터 설정 함수
-
         ChannelLevel = 1;
         Viewers = 0;
         CurrentHp = MaxHp;
         Money = 100;
         Energy = 3;
 
+        List<CardStruct> cardList = GameData.Instance.CardList;
         Deck = new List<CardStruct>(){
-            GameData.Instance.CardList[0],
-            GameData.Instance.CardList[0],
-            GameData.Instance.CardList[0],
-            GameData.Instance.CardList[1],
-            GameData.Instance.CardList[1],
-            GameData.Instance.CardList[1],
-            GameData.Instance.CardList[2],
-            GameData.Instance.CardList[3]
+            cardList[0],
+            cardList[0],
+            cardList[0],
+            cardList[1],
+            cardList[1],
+            cardList[1],
+            cardList[2],
+            cardList[3]
         };
 
     }

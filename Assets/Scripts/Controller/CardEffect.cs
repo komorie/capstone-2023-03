@@ -7,16 +7,6 @@ using Unity.VisualScripting;
 
 public class CardEffect : MonoBehaviour
 {
-    private void OnEnable()
-    {
-
-    }
-
-    private void OnDisable()
-    {
-
-
-    }
 
     public static async void UseCardEffect(CardStruct card)
     {

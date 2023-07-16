@@ -9,30 +9,20 @@ using Random = UnityEngine.Random;
 public class StageManager : Singleton<StageManager>
 {
 
+    private static readonly int roomInterval = 20; //방 사이 간격
+    private static Vector2 roomSize = new Vector2(10, 10); //방 크기
     private List<int> ThemeIndexes { get; set; }
 
     public int Stage { get; set; } = 0; //현재 스테이지 레벨
-
     public Define.ThemeType Theme { get; set; } //현재 스테이지의 테마
+    private int roomCount; //현재 스테이지의 방 숫자
+    private Dictionary<int, Define.EventType> specialRoomIndexes; //현재 스테이지에서 특수 방이 될 번호들 모음
+    public List<Room> Rooms { get; set; } //현재 스테이지 방 컴포넌트 배열
+    public List<Vector2> RoomPoints { get; set; } //현재 스테이지 방 좌표 배열
+    public List<List<int>> RoomEdges { get; set; } //현재 스테이지 방 연결관계 배열
 
-    private static readonly int roomInterval = 20; //방 사이 간격
-    private static Vector2 roomSize = new Vector2(10, 10); //방 크기
-
-    private int roomCount; //현재 맵의 방 숫자
-    private Dictionary<int, Define.EventType> specialRoomIndexes; //특수 방이 될 배열 인덱스들 모음
-
-
-    public Room CurrentRoom { get; set; }
-
-
-    public event Action<Room> OnRoomClear;
-    public event Action OnLevelEnter;
+    public event Action OnRoomClear;
     public event Action OnLevelClear;
-
-
-    public List<Room> Rooms { get; set; }   
-    public List<Vector2> RoomPoints { get; set; }
-    public List<List<int>> RoomEdges { get; set; }
 
     //맵이 배치될 부모 게임오브젝트
     public GameObject Map
@@ -50,14 +40,14 @@ public class StageManager : Singleton<StageManager>
     }
 
 
-    //델리게이트가 참조한 함수들에게 현재 방이 클리어되었음을 알리는 함수.
-    public void RoomClear()
+    //옵저버들에게 현재 방이 클리어되었음을 알리는 함수.
+    public void NotifyRoomClear()
     {
-        OnRoomClear?.Invoke(CurrentRoom);
+        OnRoomClear?.Invoke();
     }
 
-    //레벨이 클리어되었을 때 실행하는 함수. 델리게이트가 참조한 함수들에게 클리어되었음을 알림
-    public void LevelClear()
+    //옵저버들에게 현재 스테이지가 클리어되었음을 알리는 함수.
+    public void NotifyLevelClear()
     {
         DestroyMap();
         CreateMap();
@@ -126,8 +116,6 @@ public class StageManager : Singleton<StageManager>
             CreateMapRoomPointsAndEdges(); //방들의 위치와 연결상태를 나타낸 그래프 생성
             PlaceMapRooms(); // 그래프대로 방 위치를 배치함
         }
-
-        OnLevelEnter?.Invoke(); //레벨 돌입을 알림
     }
 
     //특별 방이 저장될 인덱스들 생성

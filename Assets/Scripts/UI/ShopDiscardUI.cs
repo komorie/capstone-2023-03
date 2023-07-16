@@ -26,12 +26,12 @@ public class ShopDiscardUI : BaseUI
     private void OnEnable()
     {
         UpdateUI();
-        PlayerData.Instance.OnDataChange += UpdateUI; //스탯값에 변화 시 UI 갱신
+        PlayerData.Instance.OnPlayerDataChange += UpdateUI; //스탯값에 변화 시 UI 갱신
         ShopData.Instance.OnDataChange += UpdateUI; //상점 데이터에 변화 시 UI 갱신
     }
     private void OnDisable()
     {
-        PlayerData.Instance.OnDataChange -= UpdateUI;
+        PlayerData.Instance.OnPlayerDataChange -= UpdateUI;
         ShopData.Instance.OnDataChange -= UpdateUI;
     }
 

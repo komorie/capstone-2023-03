@@ -27,12 +27,12 @@ public class ShopPurchaseUI : MonoBehaviour
     private void OnEnable()
     {
         UpdateUI();
-        PlayerData.Instance.OnDataChange += UpdateUI; //스탯값에 변화 시 UI 갱신
+        PlayerData.Instance.OnPlayerDataChange += UpdateUI; //스탯값에 변화 시 UI 갱신
         ShopData.Instance.OnDataChange += UpdateUI; //상점 데이터에 변화 시 UI 갱신
     }
     private void OnDisable()
     {
-        PlayerData.Instance.OnDataChange -= UpdateUI;
+        PlayerData.Instance.OnPlayerDataChange -= UpdateUI;
         ShopData.Instance.OnDataChange -= UpdateUI;
     }
 
@@ -98,7 +98,7 @@ public class ShopPurchaseUI : MonoBehaviour
                     AssetLoader.Instance.Destroy(cardUI.gameObject); //카드 UI 제거
 
                     PlayerData.Instance.Deck.Add(cardUI.Card); // 카드를 덱에 추가
-                    PlayerData.Instance.DeckChanged(); //덱 변경 알려서 UI 새로고침하도록!
+                    PlayerData.Instance.OnPlayerDataChanged(); //덱 변경 알려서 UI 새로고침하도록!
 
                     ShopData.Instance.ShopCardsList.Remove(cardUI.Card);  //상점에서 카드 삭제
                     ShopData.Instance.DataChanged(); //상점 데이터 변경 알려서 UI 새로고침하도록!

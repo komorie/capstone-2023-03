@@ -96,6 +96,6 @@ public class BossSymbol : RoomSymbol
                 .GetComponent<CardSelectUI>()
                 .LevelUpReward();
         }
-        StageManager.Instance.LevelClear();
+        StageManager.Instance.NotifyLevelClear();
     }
 }

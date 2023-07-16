@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-//게임 창에서 단축키로 UI 띄우기
+//인게임 창에서 단축키로 UI 띄우는 스크립트
 public class InGameUI : MonoBehaviour
 {
 
     private void OnEnable()
     {
-        UIManager.Instance.UIChange += ChangeUIControll;
+        UIManager.Instance.OnUIChanged += ChangeUIControll;
         InputActions.keyActions.Player.Deck.started += OnDeckStarted;
         InputActions.keyActions.Player.Pause.started += OnPauseStarted;
         InputActions.keyActions.Player.MiniMap.started += OnMiniMapStarted;
@@ -17,7 +17,7 @@ public class InGameUI : MonoBehaviour
 
     private void OnDisable()
     {
-        UIManager.Instance.UIChange -= ChangeUIControll;
+        UIManager.Instance.OnUIChanged -= ChangeUIControll;
         InputActions.keyActions.Player.Deck.started -= OnDeckStarted;
         InputActions.keyActions.Player.Pause.started -= OnPauseStarted;
         InputActions.keyActions.Player.MiniMap.started -= OnMiniMapStarted;
@@ -30,7 +30,7 @@ public class InGameUI : MonoBehaviour
             InputActions.keyActions.UI.Disable();
             InputActions.keyActions.Player.Enable();
         }
-        else //그 이외의 UI가 떠있으면 플레이어 조작 비활성화
+        else //그 이외의 UI가 떠있으면 플레이어 조작키 비활성화
         {
             InputActions.keyActions.Player.Disable();
             InputActions.keyActions.UI.Enable();

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 
 //대화면 UI 소환
-//UI 내부의 UI들은 이걸로 부르면 안딤
+//UI 내부의 UI(캔버스가 아닌 것들)은 이걸로 부르지 말 것
 public class UIManager : Singleton<UIManager>
 {
     //소환한 모든 UI의 루트인 게임오브젝트
@@ -29,7 +29,7 @@ public class UIManager : Singleton<UIManager>
     private Stack<GameObject> UIStack = new Stack<GameObject>();
 
     //UI 변경 시 발생될 이벤트
-    public Action<GameObject> UIChange;
+    public Action<GameObject> OnUIChanged { get; set; }
 
 
     protected override void Awake()
@@ -56,7 +56,7 @@ public class UIManager : Singleton<UIManager>
             UIStack.Peek().SetActive(false);
         }
         UIStack.Push(ui);
-        UIChange?.Invoke(ui);
+        OnUIChanged?.Invoke(ui);
         return ui;
     }
 
@@ -73,11 +73,11 @@ public class UIManager : Singleton<UIManager>
             if(UIStack.Count > 0)
             {
                 UIStack.Peek().SetActive(true);
-                UIChange?.Invoke(UIStack.Peek());    
+                OnUIChanged?.Invoke(UIStack.Peek());    
             }
             else
             {
-                UIChange?.Invoke(null);
+                OnUIChanged?.Invoke(null);
             }
         }
     }

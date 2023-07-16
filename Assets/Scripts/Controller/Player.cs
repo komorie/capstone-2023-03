@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     private bool isMoving = false;
     private float moveSpeed = 5;
     private Vector3 moveDirection = Vector3.zero;
-
     private LayerMask wall;
 
     private void Awake()
@@ -55,7 +54,7 @@ public class Player : MonoBehaviour
     //이동, 회전
     private void Update()
     {
-        //빛 발사 후, 벽 layerMask가 안 걸리고 + 키가 입력되는 상태일 때 이동
+        //빛 발사 후, 벽 layerMask가 안 걸리면서 키가 입력되는 상태일 때 이동
         if (!Physics.Raycast(transform.position + Vector3.up, moveDirection, 0.5f, wall))
         {
             if(isMoving)
@@ -66,14 +65,17 @@ public class Player : MonoBehaviour
         }
     }
 
-	//Action의 입력 정보를 context, 리턴 값은 ReadValue로 가져올 수 있음.Up으로 매핑한 입력이 들어오면 Vector2(0, 1) 값을 가져오는 식.
+	//Action의 입력 정보를 context, 리턴 값은 ReadValue로 가져올 수 있음. Up으로 매핑한 입력이 들어오면 Vector2(0, 1) 값을 가져오는 식.
     //이동 방향은 카메라 기준이므로, 카메라를 기준으로 플레이어가 이동할 방향 벡터를 만들어 준다.
     public void OnMovePerformed(InputAction.CallbackContext context)
     {
         isMoving = true;
         Vector2 input = context.ReadValue<Vector2>();
+
         moveDirection = (input.x * playerCamera.transform.right) + (input.y * playerCamera.transform.forward);
         moveDirection.y = 0;
+        moveDirection.Normalize();
+
         animator.CrossFade("RUN", 0.1f); //RUN 애니메이션으로 0.1f 간의 겹치는 시간을 가지고 부드럽게 전환.
     }
 

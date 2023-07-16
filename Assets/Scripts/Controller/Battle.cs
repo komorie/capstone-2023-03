@@ -6,17 +6,6 @@ using System.Threading.Tasks;
 public class Battle : MonoBehaviour
 {
 
-    private void OnEnable()
-    {
-        
-    }
-
-    private void OnDisable()
-    {
-
-
-    }
-
     public static bool Draw()
     {
         

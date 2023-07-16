@@ -7,10 +7,7 @@ using UnityEngine;
 //1. 함수라서 디버깅에 걸린다.
 public class Room : MonoBehaviour
 {
-
-    public int Index { get; set; }
     public bool IsCleared { get; set; } = false; //방 깼다
-
     public bool IsEntered { get; set; } = false; //방 들어왔다
 
     public Define.EventType Type { get; set; }
@@ -33,7 +30,7 @@ public class Room : MonoBehaviour
             {
                 IsCleared = true;
                 ActivateDoors(true);
-                StageManager.Instance.RoomClear();
+                StageManager.Instance.NotifyRoomClear();
             }
         }
     }
@@ -45,7 +42,7 @@ public class Room : MonoBehaviour
         {
             IsCleared = true;
             ActivateDoors(true);
-            StageManager.Instance.RoomClear();
+            StageManager.Instance.NotifyRoomClear();
         }
     }
 
@@ -67,9 +64,8 @@ public class Room : MonoBehaviour
         {
             //심볼을 소환할 때, 각각 랜덤으로 인덱스를 배정하고, 인덱스에 따라 다른 대화 내용과 전투, 아이템 획득 등을 하게 할 예정
             case Define.EventType.Enemy:
-                Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/EnemySymbol", transform)
-                    .AddComponent<EnemySymbol>();
-
+                Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/EnemySymbol", transform).AddComponent<EnemySymbol>();
+                
                 int choice = Random.Range(0, 2); //일반 잡몹 대화문일지 보스 잡몹 대화문일지
                 offset = choice == 0 ? 0 : (int)StageManager.Instance.Theme;
                 Symbol.Init(offset, type); 

@@ -21,7 +21,7 @@ public class Singleton<T> : MonoBehaviour where T : Component
     }
 
     //유니티의 OnDisable(오브젝트가 비활성화) 함수는 Destroy(오브젝트가 파괴)될때도 호출된다.
-    //이 코드 상, OnDisable 함수에서 싱글톤 인스턴스에 접근하려고 할 때, 오브젝트가 파괴된 상황이라면 싱글톤 오브젝트를 새로 생성해버린다...
+    //이 코드 상, OnDisable 함수에서 싱글톤 인스턴스에 접근하려고 할 때, 오브젝트가 파괴된 상황이라면 싱글톤 오브젝트를 새로 생성해버린다.
     //그렇다고 자동으로 새로 생성하는 작업을 없애면 불편함.
     //그래서 싱글톤 오브젝트가 파괴되고 나서 접근하는 경우는 static bool을 사용해 재생성하지 않도록 함.
     private void OnDestroy()

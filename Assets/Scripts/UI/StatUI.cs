@@ -22,14 +22,14 @@ public class StatUI : MonoBehaviour
     private void OnEnable()
     {
         UpdateUI();
-        PlayerData.Instance.OnDataChange += UpdateUI; //스탯값에 변화 시 UI 갱신
-        StageManager.Instance.OnLevelEnter += UpdateUI; //스테이지 변화 시 UI 갱신
+        PlayerData.Instance.OnPlayerDataChange += UpdateUI; //스탯값에 변화 시 UI 갱신
+        StageManager.Instance.OnLevelClear += UpdateUI; //스테이지 변화 시 UI 갱신
     }
 
     private void OnDisable()
     {
-        PlayerData.Instance.OnDataChange -= UpdateUI;
-        StageManager.Instance.OnLevelEnter -= UpdateUI; 
+        PlayerData.Instance.OnPlayerDataChange -= UpdateUI;
+        StageManager.Instance.OnLevelClear -= UpdateUI; 
 
     }
 

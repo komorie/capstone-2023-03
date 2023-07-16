@@ -45,7 +45,6 @@ public class CardUI : BaseUI, IPointerDownHandler, IPointerEnterHandler, IPointe
 
     public void OnPointerExit(PointerEventData eventData) //카드 마우스 탈출 시 감지
     {
-
         OnCardExited?.Invoke(this); 
     }
 
@@ -72,23 +71,19 @@ public class CardUI : BaseUI, IPointerDownHandler, IPointerEnterHandler, IPointe
 
         //카드에 속성에 연결된 이미지 가져오기
         if (Card.attribute != null && Card.attribute != "") image.sprite = GameData.Instance.SpriteDic[Card.attribute];
-        else
-        {  
-            //무속성인 경우는 다른 필드로 이미지 결정 
-        }
 
     }
 
     public void CardBig() //해당 카드 UI 확대
     {
-        StopAllCoroutines(); // 현재 실행 중인 모든 코루틴을 멈춥니다.
-        StartCoroutine(ChangeScale(Vector3.one * 1.1f)); // 새로운 크기로 천천히 변환하는 코루틴을 시작합니다.
+        StopAllCoroutines(); 
+        StartCoroutine(ChangeScale(Vector3.one * 1.1f)); // 새로운 크기로 천천히 변환하는 코루틴을 시작
     }
 
     public void CardSmall() //해당 카드 UI 축소
     {
-        StopAllCoroutines(); // 현재 실행 중인 모든 코루틴을 멈춥니다.
-        StartCoroutine(ChangeScale(Vector3.one)); // 새로운 크기로 천천히 변환하는 코루틴을 시작합니다.
+        StopAllCoroutines(); 
+        StartCoroutine(ChangeScale(Vector3.one)); // 새로운 크기로 천천히 변환하는 코루틴을 시작
     }
 
     private IEnumerator ChangeScale(Vector3 targetScale) // 주어진 크기로 천천히 변환
