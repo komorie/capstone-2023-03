@@ -41,6 +41,16 @@ https://kookmin-sw.github.io/capstone-2023-03/
 
 > Releases 탭에 배포되어 있는 압축 파일을 다운받아 Game.exe를 실행
 
+조작
+-------
+
+> 이동: WASD
+> 상호작용: Space Bar
+> 덱: E
+> 미니맵: Tab
+> 일시정지: ESC
+> 카드 사용: Mouse Drag & Drop
+
 게임 로직
 --------
 
