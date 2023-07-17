@@ -27,12 +27,12 @@ public class ShopPurchaseUI : MonoBehaviour
     private void OnEnable()
     {
         UpdateUI();
-        PlayerData.Instance.OnPlayerDataChange += UpdateUI; //스탯값에 변화 시 UI 갱신
+        PlayerData.Instance.OnDataChange += UpdateUI; //스탯값에 변화 시 UI 갱신
         ShopData.Instance.OnDataChange += UpdateUI; //상점 데이터에 변화 시 UI 갱신
     }
     private void OnDisable()
     {
-        PlayerData.Instance.OnPlayerDataChange -= UpdateUI;
+        PlayerData.Instance.OnDataChange -= UpdateUI;
         ShopData.Instance.OnDataChange -= UpdateUI;
     }
 
@@ -98,10 +98,10 @@ public class ShopPurchaseUI : MonoBehaviour
                     AssetLoader.Instance.Destroy(cardUI.gameObject); //카드 UI 제거
 
                     PlayerData.Instance.Deck.Add(cardUI.Card); // 카드를 덱에 추가
-                    PlayerData.Instance.OnPlayerDataChanged(); //덱 변경 알려서 UI 새로고침하도록!
+                    PlayerData.Instance.NotifyDataChange(); //덱 변경 알려서 UI 새로고침하도록!
 
                     ShopData.Instance.ShopCardsList.Remove(cardUI.Card);  //상점에서 카드 삭제
-                    ShopData.Instance.DataChanged(); //상점 데이터 변경 알려서 UI 새로고침하도록!
+                    ShopData.Instance.NotifyDataChange(); //상점 데이터 변경 알려서 UI 새로고침하도록!
                 }
                 else
                 {
@@ -121,8 +121,8 @@ public class ShopPurchaseUI : MonoBehaviour
         {
             PlayerData.Instance.Money -= rerollCost; // 돈을 지불
             ShopData.Instance.RerollCost += 25; //리롤비용 25 증가
-            ShopData.Instance.InitShopCardList(); //상점 카드 리스트 초기화
-            ShopData.Instance.DataChanged(); //상점 데이터 변경 알려서 UI 새로고침하도록!
+            ShopData.Instance.InitShopData(); //상점 카드 리스트 초기화
+            ShopData.Instance.NotifyDataChange(); //상점 데이터 변경 알려서 UI 새로고침하도록!
         }
         else
         {

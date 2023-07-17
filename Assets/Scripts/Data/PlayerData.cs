@@ -18,18 +18,18 @@ public class PlayerData : Singleton<PlayerData>
 
     public int ChannelLevel {
         get { return channelLevel; }
-        set { channelLevel = value; OnPlayerDataChange?.Invoke(); }
+        set { channelLevel = value; OnDataChange?.Invoke(); }
     }  //채널 레벨
 
     public int Viewers {
         get { return viewers; }
-        set { viewers = value; OnPlayerDataChange?.Invoke(); }
+        set { viewers = value; OnDataChange?.Invoke(); }
     }  //애청자 수
 
     public float CurrentHp
     {
         get { return currentHp; }
-        set { currentHp = value; OnPlayerDataChange?.Invoke(); }
+        set { currentHp = value; OnDataChange?.Invoke(); }
     }  //현재 체력
     public float MaxHp { //최대 체력
         get 
@@ -48,26 +48,26 @@ public class PlayerData : Singleton<PlayerData>
         set 
         {
             maxHp = value;
-            OnPlayerDataChange?.Invoke();
+            OnDataChange?.Invoke();
         }
     }
 
     public int Money
     {
         get { return money; }
-        set { money = value; OnPlayerDataChange?.Invoke(); }
+        set { money = value; OnDataChange?.Invoke(); }
     }  //현재 돈
 
     public int Energy
     {
         get { return energy; }
-        set { energy = value; OnPlayerDataChange?.Invoke(); }
+        set { energy = value; OnDataChange?.Invoke(); }
     } //현재 에너지
 
     public List<CardStruct> Deck { get; set; }
 
     //데이터 변경 시 발생시킬 이벤트
-    public event Action OnPlayerDataChange;
+    public event Action OnDataChange;
 
     protected override void Awake()
     {
@@ -76,9 +76,9 @@ public class PlayerData : Singleton<PlayerData>
     }
 
     //다른 데이터 변경은 자동으로 감지되므로 덱이 바뀌었을 때만 호출하기
-    public void OnPlayerDataChanged()
+    public void NotifyDataChange()
     {
-        OnPlayerDataChange?.Invoke();
+        OnDataChange?.Invoke();
     }
 
 

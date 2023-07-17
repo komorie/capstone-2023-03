@@ -48,13 +48,13 @@ public class LibraryUI : BaseUI
     private void OnEnable()
     {
         InputActions.keyActions.UI.Deck.started += Close;
-        PlayerData.Instance.OnPlayerDataChange += RefreshLibrary; //이거는 덱이 바뀔 때마다 그것을 감지하여 카드 UI를 새로고침하기 위함.
+        PlayerData.Instance.OnDataChange += RefreshLibrary; //이거는 덱이 바뀔 때마다 그것을 감지하여 카드 UI를 새로고침하기 위함.
     }
 
     private void OnDisable()
     {
         InputActions.keyActions.UI.Deck.started -= Close;
-        PlayerData.Instance.OnPlayerDataChange -= RefreshLibrary;
+        PlayerData.Instance.OnDataChange -= RefreshLibrary;
     }
 
     public void Init(LibraryMode libraryMode = LibraryMode.Library)
@@ -182,9 +182,9 @@ public class LibraryUI : BaseUI
                         {
                             PlayerData.Instance.Deck.Remove(cardUI.Card); //해당 카드를 버리고 라이브러리 UI 안닫음.
                             PlayerData.Instance.Money = newMoney; //제거 비용만큼 플레이어 돈에서 차감하기
-                            PlayerData.Instance.OnPlayerDataChanged(); //덱 변경 알려서 라이브러리를 새로고침하도록!
+                            PlayerData.Instance.NotifyDataChange(); //덱 변경 알려서 라이브러리를 새로고침하도록!
                             ShopData.Instance.DiscardCost += 25; //삭제 비용 25 추가
-                            ShopData.Instance.DataChanged(); //상점 데이터 변경 알려서 삭제비용 새로고침하도록!
+                            ShopData.Instance.NotifyDataChange(); //상점 데이터 변경 알려서 삭제비용 새로고침하도록!
                         }
                     };
                     cardUI.OnCardEntered += (cardUI) => { cardUI.CardBig(); }; //카드에 마우스 들어갈 시 해당 카드 확대 수행하도록 등록.

@@ -37,13 +37,13 @@ public class ShopData : Singleton<ShopData>
         StageManager.Instance.OnStageClear -= ClearShopData;
     }
 
-    public void DataChanged()
+    public void NotifyDataChange()
     {
         OnDataChange?.Invoke(); 
     }
 
     //상점 카드 초기화
-    public void InitShopCardList()
+    public void InitShopData()
     {
 
         ShopCardsList.Clear();
@@ -67,7 +67,7 @@ public class ShopData : Singleton<ShopData>
     public void ClearShopData()
     {
 
-        InitShopCardList();
+        InitShopData();
 
         RerollCost = 50;
         DiscardCost = 75;

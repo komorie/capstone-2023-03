@@ -40,12 +40,6 @@ public class EnemyData : Singleton<EnemyData>
         EnemyList = new List<EnemyStruct> { Enemy1, Enemy2, Enemy3 };
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void init(int num, string name, int stage)
     {
         this.stage = stage;

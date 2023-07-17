@@ -11,17 +11,20 @@ public class GameData : Singleton<GameData>
 
     private bool isLoaded = false;
 
+    private Dictionary<string, Sprite> spriteDic = new Dictionary<string, Sprite>();
+    private List<CardStruct> cardList;
+    private Dictionary<int, List<LineStruct>> dialogDic;
+    private Dictionary<int, RewardStruct> rewardDic;
+
     //파일 경로에 맞는 스프라이트 파일 전체가 저장된 딕셔너리, 굳이 로드하는 이유는 I/O 줄이려고
-    public Dictionary<string, Sprite> SpriteDic { get; set; } = new Dictionary<string, Sprite>();
-
+    public Dictionary<string, Sprite> SpriteDic { get => spriteDic; set => spriteDic = value; }
     //카드 전체가 저장된 리스트
-    public List<CardStruct> CardList { get; set; } = new List<CardStruct>();
-
+    public List<CardStruct> CardList { get => cardList; set => cardList = value; }
     //대화 로그 전체가 저장된 리스트
-    public Dictionary<int, List<LineStruct>> DialogDic { get; set; } = new Dictionary<int, List<LineStruct>>();
-
+    public Dictionary<int, List<LineStruct>> DialogDic { get => dialogDic; set => dialogDic = value; }
     //스테이지별 보상 딕셔너리 (인덱스, 보상 구조체)
-    public Dictionary<int, RewardStruct> RewardDic { get; set; } = new Dictionary<int, RewardStruct>();
+    public Dictionary<int, RewardStruct> RewardDic { get => rewardDic; set => rewardDic = value; }
+
 
     protected override void Awake()
     {
@@ -34,9 +37,9 @@ public class GameData : Singleton<GameData>
     {
         if (isLoaded) return;
         LoadSpriteDic();
-        LoadCardList();
-        LoadDialogDic();
-        LoadRewardDic();    
+        GameDataLoader.LoadData("Data/CardLibrary", out cardList);
+        GameDataLoader.LoadData("Data/Dialog", out dialogDic);
+        GameDataLoader.LoadData("Data/Reward", out rewardDic);
         isLoaded = true;
     }
 
@@ -65,7 +68,9 @@ public class GameData : Singleton<GameData>
         }
     }
 
-    //카드 리스트 로드
+
+    //일반화 전 코드들
+   /* //카드 리스트 로드
     public void LoadCardList()
     {
         Debug.Log("카드 리스트 로드");
@@ -100,7 +105,6 @@ public class GameData : Singleton<GameData>
                 RewardDic.Add(index, reward);
             }
         }
-
     }
 
     //대화 로그 전체 로드
@@ -133,5 +137,5 @@ public class GameData : Singleton<GameData>
                 lines.Add(line);
             }
         }
-    }
+    }*/
 }

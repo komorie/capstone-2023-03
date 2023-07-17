@@ -25,6 +25,7 @@ namespace DataStructs
     [System.Serializable]
     public class LineStruct
     {
+        public int index;
         public string portrait;
         public string name;
         public string line;
@@ -33,6 +34,7 @@ namespace DataStructs
     [System.Serializable]
     public class SettingStruct
     {
+        public int index;
         public bool tutorial;
         public int bgm;
         public int effect;
@@ -41,6 +43,7 @@ namespace DataStructs
     [System.Serializable]
     public class RewardStruct
     {
+        public int index;
         public int viewers;
         public int money;
     }

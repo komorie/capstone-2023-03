@@ -7,7 +7,9 @@ using System.IO;
 
 public class AllEnemyData : Singleton<AllEnemyData>
 {
-    public List<EnemyStruct> enemyStructs {get; set;} = new List<EnemyStruct>();
+    private List<EnemyStruct> enemyStructs;
+
+    public List<EnemyStruct> EnemyStructs { get => enemyStructs; set => enemyStructs = value; }
 
     public List<string> NoneEnemyNames { get; set;} = new List<string> {"Knight","Fighter","Peasant","Priest","Thief"};
     public List<string> PirateEnemyNames { get; set; } = new List<string> { "Dealer", "Tanker", "Supporter"};
@@ -20,24 +22,17 @@ public class AllEnemyData : Singleton<AllEnemyData>
     {
         base.Awake();
         DontDestroyOnLoad(this);
-        LoadEnemyData();
+        LoadAllEnemyData();
     }
 
-    public void LoadEnemyData()
+    public void LoadAllEnemyData()
     {
-        Debug.Log("적 리스트 로드");
-        string filePath = "Data/EnemyData";
-        TextAsset jsonData = AssetLoader.Instance.Load<TextAsset>(filePath);
-        if (jsonData != null)
-        {
-            string jsonString = jsonData.text;
-            enemyStructs = JsonMapper.ToObject<List<EnemyStruct>>(jsonString);
-        }
+        GameDataLoader.LoadData("Data/EnemyData", out enemyStructs);
     }
 
     public EnemyStruct GetEnemyData(string name, int stage)
     {
-        foreach (EnemyStruct enemyStruct in enemyStructs)
+        foreach (EnemyStruct enemyStruct in EnemyStructs)
         {
             if (enemyStruct.name == name && enemyStruct.stage == stage)
             {

@@ -5,7 +5,7 @@ using ClearSky;
 
 namespace ClearSky
 {
-    public class PlayerMove : MonoBehaviour
+    public class BattlePlayerMove : MonoBehaviour
     {
         private Camera playerCamera;
 
@@ -13,8 +13,6 @@ namespace ClearSky
         // Start is called before the first frame update
         void Awake()
         {
-            
-
             anim = GetComponent<Animator>();
         }
 
