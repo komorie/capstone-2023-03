@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 635405206}
   - component: {fileID: 635405205}
   m_Layer: 0
-  m_Name: InGameUI
+  m_Name: InGameUIController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

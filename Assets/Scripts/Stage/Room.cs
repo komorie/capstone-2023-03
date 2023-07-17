@@ -67,7 +67,7 @@ public class Room : MonoBehaviour
                 Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/EnemySymbol", transform).AddComponent<EnemySymbol>();
                 
                 int choice = Random.Range(0, 2); //일반 잡몹 대화문일지 보스 잡몹 대화문일지
-                offset = choice == 0 ? 0 : (int)StageManager.Instance.Theme;
+                offset = choice == 0 ? 0 : (int)StageManager.Instance.StageTheme;
                 Symbol.Init(offset, type); 
 
                 break;
@@ -90,7 +90,7 @@ public class Room : MonoBehaviour
             case Define.EventType.Boss:
                 Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/BossSymbol", transform)
                     .AddComponent<BossSymbol>();
-                Symbol.Init(Define.BOSS_INDEX + (int)StageManager.Instance.Theme - 1, type);
+                Symbol.Init(Define.BOSS_INDEX + (int)StageManager.Instance.StageTheme - 1, type);
                 break;
             default:
                 return;

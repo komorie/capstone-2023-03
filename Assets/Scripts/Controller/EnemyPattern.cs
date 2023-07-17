@@ -24,7 +24,7 @@ public class EnemyPattern : MonoBehaviour
         int indext = enemy.index;
         string name = enemy.name;
         string special = enemy.special;
-        int stage = StageManager.Instance.Stage;
+        int stage = StageManager.Instance.StageLevel;
         switch (name)
         {
             case "Fighter":

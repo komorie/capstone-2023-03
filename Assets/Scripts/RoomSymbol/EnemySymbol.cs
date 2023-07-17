@@ -44,14 +44,14 @@ public class EnemySymbol : RoomSymbol
         GameObject Room = transform.parent.gameObject;
         SoundManager.Instance.Play("Sounds/BattleBgm", Sound.Bgm);
         UIManager.Instance.ShowUI("BackGroundUI");
-        UIManager.Instance.ShowUI("BattleUI",false).GetComponent<BattleUI>().Init(index, Room.name, StageManager.Instance.Stage);
+        UIManager.Instance.ShowUI("BattleUI",false).GetComponent<BattleUI>().Init(index, Room.name, StageManager.Instance.StageLevel);
         BattleData.Instance.LoadData();
     }
 
     public void FightEnd()
     {
-        PlayerData.Instance.Money += GameData.Instance.RewardDic[StageManager.Instance.Stage].money; 
-        PlayerData.Instance.Viewers += GameData.Instance.RewardDic[StageManager.Instance.Stage].viewers;
+        PlayerData.Instance.Money += GameData.Instance.RewardDic[StageManager.Instance.StageLevel].money; 
+        PlayerData.Instance.Viewers += GameData.Instance.RewardDic[StageManager.Instance.StageLevel].viewers;
 
 
         CardSelectUI cardSelectUI = UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardSelectUI>();
@@ -61,8 +61,8 @@ public class EnemySymbol : RoomSymbol
 
     public void NegotiateEnd()
     {
-        PlayerData.Instance.Money += GameData.Instance.RewardDic[StageManager.Instance.Stage].money / 2;
-        PlayerData.Instance.Viewers += GameData.Instance.RewardDic[StageManager.Instance.Stage].viewers / 2;
+        PlayerData.Instance.Money += GameData.Instance.RewardDic[StageManager.Instance.StageLevel].money / 2;
+        PlayerData.Instance.Viewers += GameData.Instance.RewardDic[StageManager.Instance.StageLevel].viewers / 2;
 
         CardSelectUI cardSelectUI = UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardSelectUI>();
         cardSelectUI.SetCloseCallback(TalkEnd);

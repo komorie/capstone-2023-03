@@ -30,11 +30,11 @@ public class ShopData : Singleton<ShopData>
 
     private void OnEnable()
     {
-        StageManager.Instance.OnLevelClear += ClearShopData; //레벨 클리어 시 이거 실행해서 상점 데이터 초기화
+        StageManager.Instance.OnStageClear += ClearShopData; //레벨 클리어 시 이거 실행해서 상점 데이터 초기화
     }
     private void OnDisable()
     {
-        StageManager.Instance.OnLevelClear -= ClearShopData;
+        StageManager.Instance.OnStageClear -= ClearShopData;
     }
 
     public void DataChanged()

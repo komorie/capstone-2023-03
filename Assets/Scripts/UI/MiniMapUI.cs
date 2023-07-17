@@ -28,12 +28,12 @@ public class MiniMapUI : MonoBehaviour
 
     public void UpdateMiniMap()
     {
-        for(int i = 0; i < StageManager.Instance.Rooms.Count; i++)
+        for(int i = 0; i < StageManager.Instance.MapRooms.Count; i++)
         {
             //표시할 방 정보들 가져오기
-            Room room = StageManager.Instance.Rooms[i]; 
-            Vector2 roomPoint = StageManager.Instance.RoomPoints[i];
-            List<int> roomEdge = StageManager.Instance.RoomEdges[i];
+            Room room = StageManager.Instance.MapRooms[i]; 
+            Vector2 roomPoint = StageManager.Instance.MapRoomPoints[i];
+            List<int> roomEdge = StageManager.Instance.MapRoomEdges[i];
 
             //미니맵 방 오브젝트 소환하고, 방의 좌표에 따라 위치 지정
             MiniMapRoom miniRoom = AssetLoader.Instance.Instantiate("Prefabs/UIElement/MiniMapRoom", miniMap.transform).GetComponent<MiniMapRoom>();

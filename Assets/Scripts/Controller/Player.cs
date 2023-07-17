@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
         InputActions.keyActions.Player.Check.started += OnCheckStarted;
 
         //레벨 클리어 시 발생하는 이벤트 등록
-        StageManager.Instance.OnLevelClear += Spawn;
+        StageManager.Instance.OnStageClear += Spawn;
     }
 
     private void OnDisable()
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
         InputActions.keyActions.Player.Move.canceled -= OnMoveCanceled;
         InputActions.keyActions.Player.Check.started -= OnCheckStarted;
 
-        StageManager.Instance.OnLevelClear -= Spawn;
+        StageManager.Instance.OnStageClear -= Spawn;
     }
 
     //이동, 회전

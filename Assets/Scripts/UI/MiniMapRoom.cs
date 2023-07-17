@@ -5,12 +5,6 @@ using UnityEngine.UI;
 
 public class MiniMapRoom : MonoBehaviour
 {
-/*    //클릭으로 이동할 방
-    public Room connectedRoom;
-
-    //마우스 올리면 색이 바뀔 테두리 이미지
-    [SerializeField]
-    public Image roomOutline;*/
 
     //룸 타입에 따라 색이 바뀔 몸체 이미지
     [SerializeField]

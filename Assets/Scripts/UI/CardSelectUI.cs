@@ -146,7 +146,7 @@ public class CardSelectUI : MonoBehaviour
             //예시로, 3스테이지면 mob3 타입의 카드들만 가져오게 된다.
             case 0: 
                 rewardCardsPool = GameData.Instance.CardList
-                    .Where(card => card.type == $"Mob{StageManager.Instance.Stage}")
+                    .Where(card => card.type == $"Mob{StageManager.Instance.StageLevel}")
                     .ToList();
                 break;
             //그 외인 경우, index는 현재 Theme의 번호와 같다. Theme에 해당하는 Enum의 텍스트(예를 들어 index가 1이면 Define.ThemeType.Pirate와 대응)
@@ -154,7 +154,7 @@ public class CardSelectUI : MonoBehaviour
             //card의 type이 Pirate1인 카드들을 가져와서 풀에 추가한다.
             default:
                 rewardCardsPool = GameData.Instance.CardList
-                    .Where(card => card.type == $"{StageManager.Instance.Theme}{StageManager.Instance.Stage}")
+                    .Where(card => card.type == $"{StageManager.Instance.StageTheme}{StageManager.Instance.StageLevel}")
                     .ToList();
                 break;
         }
@@ -172,7 +172,7 @@ public class CardSelectUI : MonoBehaviour
         discardButton.gameObject.SetActive(false); //협상 시에는 반드시 카드 택하기
 
         //타입이 보스인 카드 중, 에너미의 인덱스번째의 카드를 가져온다.
-        rewardCards.Add(GameData.Instance.CardList.Where(card => card.type == $"{StageManager.Instance.Theme}Boss").ElementAtOrDefault(0));
+        rewardCards.Add(GameData.Instance.CardList.Where(card => card.type == $"{StageManager.Instance.StageTheme}Boss").ElementAtOrDefault(0));
         ShowReward();
     }
 
@@ -229,10 +229,10 @@ public class CardSelectUI : MonoBehaviour
         discardButton.gameObject.SetActive(false); //협상 시에는 반드시 카드 택하기
 
         //타입이 파트너인 카드 중, 현재 스테이지에 맞는 카드를 가져오기.
-        rewardCards.Add(GameData.Instance.CardList.Where(card => card.type == $"Partner{StageManager.Instance.Stage}").ElementAtOrDefault(0));
+        rewardCards.Add(GameData.Instance.CardList.Where(card => card.type == $"Partner{StageManager.Instance.StageLevel}").ElementAtOrDefault(0));
 
         //동료 카드 획득한걸로 설정
-        PlayerData.Instance.HasPartner[StageManager.Instance.Stage - 1] = true;
+        PlayerData.Instance.HasPartner[StageManager.Instance.StageLevel - 1] = true;
 
         ShowReward();
     }
