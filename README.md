@@ -44,12 +44,12 @@ https://kookmin-sw.github.io/capstone-2023-03/
 조작
 -------
 
-> 이동: WASD
-> 상호작용: Space Bar
-> 덱: E
-> 미니맵: Tab
-> 일시정지: ESC
-> 카드 사용: Mouse Drag & Drop
+> 이동: WASD  
+> 상호작용: Space Bar  
+> 덱: E  
+> 미니맵: Tab  
+> 일시정지: ESC  
+> 카드 사용: Mouse Drag & Drop  
 
 게임 로직
 --------
