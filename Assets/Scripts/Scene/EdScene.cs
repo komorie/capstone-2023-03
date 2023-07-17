@@ -7,13 +7,9 @@ public class EdScene : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        SoundManager.Instance.Play("OpBgm", Sound.Effect);
+        SoundManager.Instance.Play("Sounds/OpBgm", Sound.Effect);
         UIManager.Instance.ShowUI("FullDialogUI").GetComponent<FullDialogUI>().Init(
-            6001,
-            () =>
-            {
-                SceneLoader.Instance.LoadScene("TitleScene");
-            }
+            6001, () => { SceneLoader.Instance.LoadScene("TitleScene"); }
         );
     }
 }
