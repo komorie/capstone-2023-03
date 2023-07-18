@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-//나중에 최적화를 더 할 수 있기 때문에 일단 이 클래스를 한번 통해서 불러오게 한다
+//나중에 최적화를 더 할 수도 있기 때문에 일단 이 클래스를 한번 통해서 불러오게 한다
 //에셋/프리팹을 불러올 때 사용 ㄱㄱ
 public class AssetLoader : Singleton<AssetLoader>
 {

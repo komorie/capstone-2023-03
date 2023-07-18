@@ -107,7 +107,7 @@ public class Room : MonoBehaviour
         Doors[direction].Destination = destination.transform.position + oppositeVector;    
     }
 
-    //문들 전부 활성화/비활성화
+    //소유한 문들 전부 활성화/비활성화
     public void ActivateDoors(bool isActivated)
     {
         foreach(KeyValuePair<Define.Direction, Door> door in Doors) 

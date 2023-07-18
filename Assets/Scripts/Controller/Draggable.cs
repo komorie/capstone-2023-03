@@ -26,7 +26,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("OnDrag");
         Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, fixedZValue);
         this.transform.position = BattleCamera.ScreenToWorldPoint(mousePos);
         this.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);

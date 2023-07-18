@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Define
+public static class Define
 {
     public const int BOSS_INDEX = 100;
     public const int SHOP_INDEX = 200;
@@ -16,6 +16,7 @@ public class Define
 
     public const int MOB_TYPES = 3;
 
+    public static WaitForSeconds WaitForSecondsDialog = new WaitForSeconds(0.2f); // WaitforSeconds 캐싱
 
 
     //방향을 나타내는 Enum

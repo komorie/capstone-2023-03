@@ -200,7 +200,7 @@ public class StageManager : Singleton<StageManager>
             int nearRoomCount = Random.Range(1, 5);
             List<int> nearRoomDirections = Define.GenerateRandomNumbers(0, 4, nearRoomCount);
 
-            foreach (int dir in nearRoomDirections)
+            for (int dir = 0; dir < nearRoomDirections.Count; dir++)
             {
                 //방을 다 채웠을 경우 종료
                 if (currentRoomCount >= StageRoomCount) break;

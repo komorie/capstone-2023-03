@@ -78,7 +78,7 @@ public class FullDialogUI : MonoBehaviour, IPointerDownHandler
         foreach (char letter in sentence.ToCharArray())
         {
             lineText.text += letter;
-            yield return new WaitForSeconds(0.02f); // wait for the next frame
+            yield return Define.WaitForSecondsDialog;
         }
         isPrinting = false; // 출력 완료
     }
