@@ -22,17 +22,17 @@ https://kookmin-sw.github.io/capstone-2023-03/
 > 그리고 여기 마녀 컨셉의 버츄얼 캐릭터인 당신, 아이리가 있다.  
 > 당신은 과연 올해의 우승자가 될 수 있을까?  
 
-소개 영상
+플레이 영상
 --------
 
-> 추가 예정
+> [![Alternate Text](https://img.youtube.com/vi/NoJn_X90eIE/0.jpg)](https://www.youtube.com/watch?v=NoJn_X90eIE)
 
 팀 소개
 ------
 
 > |이름|학번|역할|
 > |-|-|-|
-> |임준범(팀장)|****2010|맵, 일반 UI, 사운드, 데이터, 파일 관리|
+> |임준범(팀장)|****2010|맵, 일반 UI, 플레이어, 대화문, 파일 관리|
 > |오현민|****1642|기획, 전투 시스템, 전투 UI|
 
 
@@ -40,6 +40,16 @@ https://kookmin-sw.github.io/capstone-2023-03/
 --------
 
 > Releases 탭에 배포되어 있는 압축 파일을 다운받아 Game.exe를 실행
+
+조작
+-------
+
+> 이동: WASD  
+> 상호작용: Space Bar  
+> 덱 확인: E  
+> 미니맵: Tab  
+> 일시정지: ESC  
+> 카드 사용: Mouse Drag & Drop  
 
 게임 로직
 --------
