@@ -16,7 +16,7 @@ public static class Define
 
     public const int MOB_TYPES = 3;
 
-    public static WaitForSeconds WaitForSecondsDialog = new WaitForSeconds(0.2f); // WaitforSeconds 캐싱
+    public static WaitForSeconds WaitForSecondsDialog = new WaitForSeconds(0.02f); // WaitforSeconds 캐싱
 
 
     //방향을 나타내는 Enum
