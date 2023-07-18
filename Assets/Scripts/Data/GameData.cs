@@ -16,7 +16,7 @@ public class GameData : Singleton<GameData>
     private Dictionary<int, List<LineStruct>> dialogDic;
     private Dictionary<int, RewardStruct> rewardDic;
 
-    //파일 경로에 맞는 스프라이트 파일 전체가 저장된 딕셔너리
+    //파일 경로에 맞는 스프라이트 파일 전체가 저장된 딕셔너리, 굳이 로드하는 이유는 I/O 줄이려고
     public Dictionary<string, Sprite> SpriteDic { get => spriteDic; set => spriteDic = value; }
     //카드 전체가 저장된 리스트
     public List<CardStruct> CardList { get => cardList; set => cardList = value; }
@@ -33,7 +33,6 @@ public class GameData : Singleton<GameData>
         LoadGameData();
     }
 
-    //I/O 횟수 줄이려고 미리 다 로딩
     public void LoadGameData()
     {
         if (isLoaded) return;
