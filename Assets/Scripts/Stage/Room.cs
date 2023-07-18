@@ -56,40 +56,34 @@ public class Room : MonoBehaviour
     {
         //Type 지정
         Type = type;
-        //Symbol 소환
 
+        //Symbol 소환
         int offset; 
 
         switch (type)
         {
             //심볼을 소환할 때, 각각 랜덤으로 인덱스를 배정하고, 인덱스에 따라 다른 대화 내용과 전투, 아이템 획득 등을 하게 할 예정
             case Define.EventType.Enemy:
-                Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/EnemySymbol", transform).AddComponent<EnemySymbol>();
-                
+                Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/EnemySymbol", transform).AddComponent<EnemySymbol>();   
                 int choice = Random.Range(0, 2); //일반 잡몹 대화문일지 보스 잡몹 대화문일지
                 offset = choice == 0 ? 0 : (int)StageManager.Instance.StageTheme;
                 Symbol.Init(offset, type); 
-
                 break;
             case Define.EventType.Rest:
-                Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/RestSymbol", transform)
-                    .AddComponent<RestSymbol>();
+                Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/RestSymbol", transform).AddComponent<RestSymbol>();
                 Symbol.Init(Define.REST_INDEX, type);
                 break;
             case Define.EventType.Shop:
-                Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/ShopSymbol", transform)
-                    .AddComponent<ShopSymbol>();
+                Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/ShopSymbol", transform).AddComponent<ShopSymbol>();
                 Symbol.Init(Define.SHOP_INDEX, type);
                 break;
             case Define.EventType.Event:
-                Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/EventSymbol", transform)
-                    .AddComponent<EventSymbol>();
+                Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/EventSymbol", transform).AddComponent<EventSymbol>();
                 offset = Random.Range(1, 8);
                 Symbol.Init(Define.EVENT_INDEX + offset, type);
                 break;
             case Define.EventType.Boss:
-                Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/BossSymbol", transform)
-                    .AddComponent<BossSymbol>();
+                Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/BossSymbol", transform).AddComponent<BossSymbol>();
                 Symbol.Init(Define.BOSS_INDEX + (int)StageManager.Instance.StageTheme - 1, type);
                 break;
             default:
@@ -99,7 +93,7 @@ public class Room : MonoBehaviour
     }
 
     //이 방에서 특정 방향에 있는 문을 목적지 위치와 연결하고, 소유한 Doors 딕셔너리에 추가한다.
-    public void SetDoorsDictionary(Define.Direction direction, Room destination)
+    public void SetDoor(Define.Direction direction, Room destination)
     {
         //일단 소유한 문 딕셔너리에 <방향-문> 추가
         Doors[direction] = transform.Find("Doors").GetChild((int)direction).GetComponent<Door>();
@@ -121,5 +115,4 @@ public class Room : MonoBehaviour
             door.Value.gameObject.SetActive(isActivated);
         }
     }
-
 }

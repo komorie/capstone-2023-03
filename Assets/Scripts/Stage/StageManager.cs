@@ -264,7 +264,7 @@ public class StageManager : Singleton<StageManager>
                 if (MapRoomEdges[node][dir] != -1)
                 {
                     //서로를 잇는 문 추가
-                    MapRooms[node].SetDoorsDictionary((Define.Direction)dir, MapRooms[MapRoomEdges[node][dir]]);
+                    MapRooms[node].SetDoor((Define.Direction)dir, MapRooms[MapRoomEdges[node][dir]]);
                 }
             }
         }
