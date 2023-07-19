@@ -24,7 +24,6 @@ public class ShieldBarEnemyUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ShieldData = GameObject.Find("EnemyData").GetComponent<EnemyData>();
         ChangeShieldText();
     }
 

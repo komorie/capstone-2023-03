@@ -24,7 +24,6 @@ public class ShieldBarPlayerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ShieldData = GameObject.Find("BattleData").GetComponent<BattleData>();
         ChangeShieldText();
     }
 

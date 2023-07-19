@@ -28,7 +28,6 @@ public class HealthBarEnemyUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HealthData = GameObject.Find("EnemyData").GetComponent<EnemyData>();
         ChangeHPText();
     }
 
