@@ -7,18 +7,6 @@ using System.Net.Http.Headers;
 
 public class EnemyPattern : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private void OnEnable()
-    {
-
-    }
-
-    private void OnDisable()
-    {
-
-
-    }
-
     public static void EnemyPatternStart(EnemyStruct enemy, int pat, int num)
     {
         int indext = enemy.index;

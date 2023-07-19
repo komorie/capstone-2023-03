@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ConfirmUI : BaseUI
+public class ConfirmUI : MonoBehaviour
 {
     [SerializeField]
     TMP_Text message;

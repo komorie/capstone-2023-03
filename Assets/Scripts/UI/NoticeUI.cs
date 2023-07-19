@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class NoticeUI : BaseUI
+public class NoticeUI : MonoBehaviour
 {
     [Header("SubNotice")]
     public GameObject noticeUI;

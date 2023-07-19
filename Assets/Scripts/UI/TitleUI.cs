@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 
 
-public class TitleUI : BaseUI
+public class TitleUI : MonoBehaviour
 {
     public void StartButtonClick()
     {

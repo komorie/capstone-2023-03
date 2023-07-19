@@ -11,7 +11,7 @@ using System.Collections;
 //1. 대화를 대화창 UI에 보여줌.
 //2. 인풋을 통해 대화창을 다음 대화로 진행.
 
-public class DialogUI : BaseUI, IPointerDownHandler
+public class DialogUI : MonoBehaviour, IPointerDownHandler
 {
     private bool isPrinting = false; // 추가된 변수
     private int dialogIndex;

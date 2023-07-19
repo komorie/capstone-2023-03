@@ -23,7 +23,7 @@ public enum LibraryMode
 //C# LInq 사용: 데이터 쿼리를 C#에서 스크립트로 사용할 수 있도록 하는 기술.
 //배열 및 다른 컬렉션에서 쉽게 원하는 구역만 가져올 수 있음.
 
-public class LibraryUI : BaseUI
+public class LibraryUI : MonoBehaviour
 {
     private LibraryMode libraryMode;
     private int cardsPerPage = 8;

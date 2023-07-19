@@ -9,7 +9,7 @@ using System.Collections;
 
 
 //카드 UI는 캔버스가 없으므로(있는 캔버스 위에 띄우는 UI임) UIManager로 호출하면 안됨 주의
-public class CardUI : BaseUI, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     //UI와 연결된 카드 객체

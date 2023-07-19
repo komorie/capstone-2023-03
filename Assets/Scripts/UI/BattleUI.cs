@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class BattleUI : BaseUI
+public class BattleUI : MonoBehaviour
 {
     [SerializeField]
     private GameObject HandUI;

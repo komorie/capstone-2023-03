@@ -33,7 +33,7 @@ public class GameData : Singleton<GameData>
         LoadGameData();
     }
 
-    //I/O 횟수 줄이려고 미리 다 로딩
+    //I/O 한번에 미리 다 로딩
     public void LoadGameData()
     {
         if (isLoaded) return;

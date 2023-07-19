@@ -8,7 +8,7 @@ using DataStructs;
 
 
 //상점에서 카드 버리는 UI
-public class ShopDiscardUI : BaseUI
+public class ShopDiscardUI : MonoBehaviour
 {
     [SerializeField]
     public TMP_Text disCostText; //제거비용
