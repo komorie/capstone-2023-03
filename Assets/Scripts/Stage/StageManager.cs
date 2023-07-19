@@ -105,7 +105,7 @@ public class StageManager : Singleton<StageManager>
                 StageTheme = Define.ThemeType.Final;
                 break;
             default:
-                throw new ArgumentOutOfRangeException(nameof(StageLevel), "Invalid StageLevel");
+                break;
         }
 
         CreateMapRooms(); //방 생성 후 방 유형 지정
