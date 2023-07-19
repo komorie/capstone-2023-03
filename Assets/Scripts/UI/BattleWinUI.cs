@@ -12,12 +12,6 @@ public class BattleWinUI : MonoBehaviour
     GameObject NowRoom;
     int Enemyinfo;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public void Init(string Room, int Enemyinfo)
     {
         this.Room = Room;
