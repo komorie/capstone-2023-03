@@ -226,8 +226,8 @@ public class StageManager : Singleton<StageManager>
             }
 
             //드물게 갈 길이 막혔거나, 운이 좋지 않아서 방문한 곳에만 다시 방문한 경우
-            //방을 다 못채웠는데 큐가 비는 경우가 생긴다. 이때 지금까지 생성한 방 중 랜덤한 위치를 큐에 넣고 다시 탐색을 실시.
-            //아니면 방을 생성하고 배열에 넣기
+            //방을 다 못채웠는데 큐가 비는 경우가 생긴다. 
+            //여러 가지 예외 상황을 상정하려다 보니 랜덤한 위치에서 다시 탐색을 실시하는 게 편한것 같아서 이렇게 설계
             if (roomQueue.Count == 0 && currentRoomCount < StageRoomCount)
             {
                 int nextRoomIndex = Random.Range(0, MapRoomPoints.Count);

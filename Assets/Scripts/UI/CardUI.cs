@@ -25,9 +25,6 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
     [SerializeField]
     private TMP_Text descriptionText;
 
-    private float scaleOnHover = 1.1f;
-    private Vector3 originalScale = Vector3.one;
-
     public Action<CardUI> OnCardClicked; //카드 UI 클릭시 실행될 함수들. 다른 UI에서 여기에 등록할 수 있음
     public Action<CardUI> OnCardEntered; //카드 UI로 마우스가 들어올 시 실행될 함수들. 다른 UI에서 여기에 등록할 수 있음
     public Action<CardUI> OnCardExited; //카드 UI에서 마우스가 나갈 시 함수들. 다른 UI에서 여기에 등록할 수 있음
