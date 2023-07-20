@@ -22,10 +22,15 @@ https://kookmin-sw.github.io/capstone-2023-03/
 > 그리고 여기 마녀 컨셉의 버츄얼 캐릭터인 당신, 아이리가 있다.  
 > 당신은 과연 올해의 우승자가 될 수 있을까?  
 
-플레이 영상
+플레이 영상 (자막 켜주세요)
 --------
 
-> [![Alternate Text](https://img.youtube.com/vi/NoJn_X90eIE/0.jpg)](https://www.youtube.com/watch?v=NoJn_X90eIE)
+> [![Alternate Text](https://img.youtube.com/vi/_qr1xKXPW2g/0.jpg)](https://youtu.be/_qr1xKXPW2g)
+
+기능 매뉴얼
+---------
+
+> https://docs.google.com/presentation/d/1a6Nop4XJL_Q_BuV2NRvCDA1wj12ggzdgWCcIhsZ5UyI/edit?usp=sharing
 
 팀 소개
 ------
