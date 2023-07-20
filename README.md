@@ -25,7 +25,12 @@ https://kookmin-sw.github.io/capstone-2023-03/
 플레이 영상
 --------
 
-> [![Alternate Text](https://img.youtube.com/vi/NoJn_X90eIE/0.jpg)](https://www.youtube.com/watch?v=NoJn_X90eIE)
+> [![Alternate Text](https://img.youtube.com/vi/_qr1xKXPW2g/0.jpg)](https://youtu.be/_qr1xKXPW2g)
+
+기능 매뉴얼
+---------
+
+> https://docs.google.com/presentation/d/1a6Nop4XJL_Q_BuV2NRvCDA1wj12ggzdgWCcIhsZ5UyI/edit?usp=sharing
 
 팀 소개
 ------
