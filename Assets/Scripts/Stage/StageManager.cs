@@ -60,7 +60,7 @@ public class StageManager : Singleton<StageManager>
         DontDestroyOnLoad(this);
     }
 
-    public void CreateStage()
+    public void InitStageManager()
     {
         StageLevel = 0;
         stageThemeList = Define.GenerateRandomNumbers((int)Define.ThemeType.Pirate, (int)Define.ThemeType.Final, 3); // 1 ~ 4 중에서 나올 스테이지 3개 지정

@@ -38,7 +38,7 @@ public class GameData : Singleton<GameData>
     {
         if (isLoaded) return;
         LoadSpriteDic();
-        GameDataLoader.LoadData("Data/CardLibrary", out cardList);
+        GameDataLoader.LoadData("Data/CardLibrary", out cardList); //out으로 만든 거 -> 인자로 구별하도록 해서 오버라이드 하려고
         GameDataLoader.LoadData("Data/Dialog", out dialogDic);
         GameDataLoader.LoadData("Data/Reward", out rewardDic);
         isLoaded = true;
