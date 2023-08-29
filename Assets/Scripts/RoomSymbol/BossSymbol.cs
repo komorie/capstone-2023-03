@@ -58,10 +58,8 @@ public class BossSymbol : RoomSymbol
         PlayerData.Instance.Money += GameData.Instance.RewardDic[StageManager.Instance.StageLevel + Define.BOSS_INDEX].money; 
         PlayerData.Instance.Viewers += GameData.Instance.RewardDic[StageManager.Instance.StageLevel + Define.BOSS_INDEX].viewers;
 
-
-
         //보상 카드 UI 닫을 시, TalkEnd 호출
-        CardSelectUI cardSelectUI = UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardSelectUI>();
+        CardRewardUI cardSelectUI = UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardRewardUI>();
         cardSelectUI.SetCloseCallback(TalkEnd);
         cardSelectUI.BossBattleReward();
     }
@@ -82,7 +80,7 @@ public class BossSymbol : RoomSymbol
         PlayerData.Instance.Viewers += GameData.Instance.RewardDic[StageManager.Instance.StageLevel + Define.BOSS_INDEX].viewers / 2;
 
         //보상 카드 UI 닫을 시, TalkEnd 호출
-        CardSelectUI cardSelectUI = UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardSelectUI>();
+        CardRewardUI cardSelectUI = UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardRewardUI>();
         cardSelectUI.SetCloseCallback(TalkEnd);
         cardSelectUI.BossNegoReward();
     }
@@ -93,7 +91,7 @@ public class BossSymbol : RoomSymbol
         if(PlayerData.Instance.CheckLevelUp())
         {
             UIManager.Instance.ShowUI("CardSelectUI")
-                .GetComponent<CardSelectUI>()
+                .GetComponent<CardRewardUI>()
                 .LevelUpReward();
         }
         StageManager.Instance.NotifyLevelClear();

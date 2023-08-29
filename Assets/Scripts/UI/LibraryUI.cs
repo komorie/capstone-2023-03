@@ -1,12 +1,10 @@
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using DataStructs;
-
-
+using System;
 
 public enum LibraryMode
 {
@@ -63,14 +61,12 @@ public class LibraryUI : MonoBehaviour
         RefreshLibrary();
     }
 
-    public void RefreshLibrary() //덱이 바뀌었을 때 호출되어, 카드 UI를 새로고침한다.
+    public void RefreshLibrary() //처음 혹은 덱이 바뀌었을 때 호출되어, 카드 UI를 새로고침한다.
     {
         switch (libraryMode) //공격, 스킬, 애청자 카드 전부 보여주기
         {
             case LibraryMode.Library:
-                showedCardList = GameData.Instance.CardList
-                .Where(card => card.type == "Attack" || card.type == "Skill" || card.type == "Viewer")
-                .ToList();
+                showedCardList = LibraryData.Instance.Library;
                 break;
             case LibraryMode.Deck: //현재 덱 보여주기
                 showedCardList = PlayerData.Instance.Deck;
@@ -112,17 +108,17 @@ public class LibraryUI : MonoBehaviour
 
         ClearCards(); //전에 표시되던 카드 제거
 
-        //Linq를 사용. 현재 페이지에 나올 분량만큼 카드 리스트에서 쿼리해서 보여주기
-        List<CardStruct> cardList = showedCardList.Skip(currentPage * cardsPerPage).Take(cardsPerPage).ToList();
+        int start = currentPage * cardsPerPage;
+        int end = Math.Min(showedCardList.Count, start + cardsPerPage); //시작페이지와 끝페이지
 
-        for (int i = 0; i < cardList.Count; i++)
+        for (int i = start; i < end; i++)
         {
 
             CardUI cardUI;
             BattleUI battleUI;
 
             cardUI = AssetLoader.Instance.Instantiate("Prefabs/UI/CardUI", deckDisplayer.transform).GetComponent<CardUI>();
-            cardUI.ShowCardData(cardList[i]); //카드를 소환
+            cardUI.ShowCardData(showedCardList[i]); //카드를 소환
 
             switch (libraryMode)
             {
@@ -211,7 +207,7 @@ public class LibraryUI : MonoBehaviour
         sortByCostButton.GetComponentInChildren<TMP_Text>().color = Color.grey;
         sortByNameButton.GetComponentInChildren<TMP_Text>().color = Color.white;
 
-        showedCardList = showedCardList.OrderBy(card => card.cost).ToList();
+        showedCardList.Sort((card1, card2) => card1.cost.CompareTo(card2.cost)); //코스트를 기준으로 정렬
         currentPage = 0;
         ShowCards();
         UpdateButtons();
@@ -226,7 +222,7 @@ public class LibraryUI : MonoBehaviour
         sortByNameButton.GetComponentInChildren<TMP_Text>().color = Color.grey;
         sortByCostButton.GetComponentInChildren<TMP_Text>().color = Color.white;
 
-        showedCardList = showedCardList.OrderBy(card => card.name).ToList();
+        showedCardList.Sort((card1, card2) => card1.name.CompareTo(card2.name)); //이름를 기준으로 정렬
         currentPage = 0;
         ShowCards();
         UpdateButtons();
@@ -248,6 +244,7 @@ public class LibraryUI : MonoBehaviour
 
     private void Close(InputAction.CallbackContext context)
     {
+        ClearCards();
         UIManager.Instance.HideUI("LibraryUI");
     }
     

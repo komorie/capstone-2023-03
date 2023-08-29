@@ -54,7 +54,7 @@ public class EnemySymbol : RoomSymbol
         PlayerData.Instance.Viewers += GameData.Instance.RewardDic[StageManager.Instance.StageLevel].viewers;
 
 
-        CardSelectUI cardSelectUI = UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardSelectUI>();
+        CardRewardUI cardSelectUI = UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardRewardUI>();
         cardSelectUI.SetCloseCallback(TalkEnd);
         cardSelectUI.BattleReward();
     }
@@ -64,7 +64,7 @@ public class EnemySymbol : RoomSymbol
         PlayerData.Instance.Money += GameData.Instance.RewardDic[StageManager.Instance.StageLevel].money / 2;
         PlayerData.Instance.Viewers += GameData.Instance.RewardDic[StageManager.Instance.StageLevel].viewers / 2;
 
-        CardSelectUI cardSelectUI = UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardSelectUI>();
+        CardRewardUI cardSelectUI = UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardRewardUI>();
         cardSelectUI.SetCloseCallback(TalkEnd);
         cardSelectUI.NegoReward(index); 
     }
@@ -75,7 +75,7 @@ public class EnemySymbol : RoomSymbol
         if (PlayerData.Instance.CheckLevelUp())
         {
             UIManager.Instance.ShowUI("CardSelectUI")
-                .GetComponent<CardSelectUI>()
+                .GetComponent<CardRewardUI>()
                 .LevelUpReward();
         }
     }

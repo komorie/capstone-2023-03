@@ -31,7 +31,7 @@ public class EventSymbol : RoomSymbol
         switch (index)
         {
             case 300: //카드 획득 이벤트 ㅇ
-                UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardSelectUI>().EventReward();
+                UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardRewardUI>().EventReward();
                 break;
             case 301: //애청자 구매 이벤트 ㅇ
 
@@ -51,7 +51,7 @@ public class EventSymbol : RoomSymbol
                             if (PlayerData.Instance.CheckLevelUp()) //레벨업 체크
                             {
                                 UIManager.Instance.ShowUI("CardSelectUI")
-                                    .GetComponent<CardSelectUI>()
+                                    .GetComponent<CardRewardUI>()
                                     .LevelUpReward();
                             } 
                         }, //예 선택하면 돈 감소, 애청자 증가
@@ -132,7 +132,7 @@ public class EventSymbol : RoomSymbol
             case 307: //이벤트 동료 1
             case 308: //이벤트 동료 2
             case 309: //이벤트 동료 3
-                UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardSelectUI>().PartnerReward();
+                UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardRewardUI>().PartnerReward();
                 break;
         }
     }

@@ -65,6 +65,4 @@ public class AssetLoader : Singleton<AssetLoader>
     {
         Object.Destroy(go);
     }
-
-
 }
