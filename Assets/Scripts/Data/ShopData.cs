@@ -11,7 +11,6 @@ using Random = UnityEngine.Random;
 public class ShopData : Singleton<ShopData>
 {
 
-
     private List<CardStruct> shopCardsPool; //상점에서 파는 카드들의 풀    
 
     //상점에서 파는 5개의 카드 리스트
@@ -21,9 +20,9 @@ public class ShopData : Singleton<ShopData>
 
     //카드 리롤 시 드는 비용
     public int RerollCost { get; set; }
-    
+
     //카드 제거 시 드는 비용
-    public int DiscardCost { get; set; }
+    public int DiscardCost{ get; set; }
 
     public event Action OnDataChange;
 
@@ -46,11 +45,6 @@ public class ShopData : Singleton<ShopData>
     private void OnDisable()
     {
         StageManager.Instance.OnStageClear -= ClearShopData;
-    }
-
-    public void NotifyDataChange()
-    {
-        OnDataChange?.Invoke(); 
     }
 
     //상점 카드 초기화
@@ -101,12 +95,23 @@ public class ShopData : Singleton<ShopData>
         {
             PlayerData.Instance.Money -= Prices[index]; // 돈을 지불
 
-            PlayerData.Instance.Deck.Add(ShopCardsList[index]); // 카드를 덱에 추가
-            PlayerData.Instance.NotifyDataChange(); //덱 변경 알려서 UI 새로고침하도록!
+            PlayerData.Instance.AddCard(ShopCardsList[index]); // 카드를 덱에 추가
 
             ShopCardsList.RemoveAt(index);  //상점에서 카드 삭제
             Prices.RemoveAt(index); //가격 삭제
-            NotifyDataChange(); //상점 데이터 변경 알려서 UI 새로고침하도록!
+            OnDataChange.Invoke(); //상점 데이터 변경 알려서 UI 새로고침하도록!
+        }
+    }
+
+    public void Discard(CardStruct card) //해당 카드 제거
+    {
+        int newMoney = PlayerData.Instance.Money - DiscardCost;
+        if (newMoney >= 0) //돈이 남은 경우만
+        {
+            PlayerData.Instance.RemoveCard(card); //해당 카드를 버리기
+            PlayerData.Instance.Money = newMoney; //제거 비용만큼 플레이어 돈에서 차감하기
+            DiscardCost += 25; //삭제 비용 25 추가
+            OnDataChange.Invoke(); //상점 데이터 변경 알려서 UI 새로고침하도록!
         }
     }
 
@@ -116,7 +121,7 @@ public class ShopData : Singleton<ShopData>
         {
             RerollCost += 25;
             InitShopData();
-            NotifyDataChange();
+            OnDataChange.Invoke();
         }
     }
 

@@ -13,7 +13,6 @@ public class PlayerData : Singleton<PlayerData>
     private float maxHp;
     private int money;
     private int energy;
-
     public bool[] HasPartner { get; set; } = new bool[3]; //해당 스테이지의 동료 카드 얻었는지
 
     public int ChannelLevel {
@@ -65,6 +64,18 @@ public class PlayerData : Singleton<PlayerData>
     } //현재 에너지
 
     public List<CardStruct> Deck { get; set; }
+
+    public void AddCard(CardStruct card)
+    {
+        Deck.Add(card);
+        OnDataChange?.Invoke();
+    }
+
+    public void RemoveCard(CardStruct card)
+    {
+        Deck.Remove(card);
+        OnDataChange?.Invoke();
+    }
 
     //데이터 변경 시 발생시킬 이벤트
     public event Action OnDataChange;

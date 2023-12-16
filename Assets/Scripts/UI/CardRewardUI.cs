@@ -45,7 +45,7 @@ public class CardRewardUI : MonoBehaviour
             cardUI.ShowCardData(rewardCards[i]); //현재 보상 카드를 보여줌.
             cardUI.OnCardClicked += (cardUI) => //카드 UI 클릭 시 해당 이벤트 발동
             {
-                PlayerData.Instance.Deck.Add(cardUI.Card); //카드 클릭 시 해당 UI의 카드를 덱에 추가
+                PlayerData.Instance.AddCard(cardUI.Card); //카드 클릭 시 해당 UI의 카드를 덱에 추가
                 UIManager.Instance.HideUI("CardSelectUI"); //창 닫기
             };
             cardUI.OnCardEntered += (cardUI) => { cardUI.CardBig(); }; //카드에 마우스 들어갈 시 해당 카드 확대 수행하도록 등록.

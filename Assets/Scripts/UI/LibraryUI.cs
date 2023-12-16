@@ -127,7 +127,7 @@ public class LibraryUI : MonoBehaviour
                 case LibraryMode.EventDiscard: //현재 덱 보여주기 + 카드 버리기 1회
                     cardUI.OnCardClicked += (cardUI) => //카드 클릭 시 하단의 이벤트 발동하도록 등록
                     {
-                        PlayerData.Instance.Deck.Remove(cardUI.Card); //해당 카드 UI의 카드를 덱에서 제거
+                        PlayerData.Instance.RemoveCard(cardUI.Card); //해당 카드 UI의 카드를 덱에서 제거
                         UIManager.Instance.HideUI("LibraryUI"); //버림 후에는 바로 라이브러리 UI 닫기.
                     };
                     cardUI.OnCardEntered += (cardUI) => { cardUI.CardBig(); }; //카드에 마우스 들어갈 시 해당 카드 확대 수행하도록 등록.
@@ -136,15 +136,7 @@ public class LibraryUI : MonoBehaviour
                 case LibraryMode.ShopDiscard: //현재 덱 보여주기 + 카드 버리기 제한X
                     cardUI.OnCardClicked += (cardUI) => //카드 클릭 시 하단의 이벤트 발동하도록 등록
                     {
-                        int newMoney = PlayerData.Instance.Money - ShopData.Instance.DiscardCost;
-                        if (newMoney >= 0) //돈이 남은 경우만
-                        {
-                            PlayerData.Instance.Deck.Remove(cardUI.Card); //해당 카드를 버리기
-                            PlayerData.Instance.Money = newMoney; //제거 비용만큼 플레이어 돈에서 차감하기
-                            PlayerData.Instance.NotifyDataChange(); //덱 변경 알리기
-                            ShopData.Instance.DiscardCost += 25; //삭제 비용 25 추가
-                            ShopData.Instance.NotifyDataChange(); //상점 데이터 변경 알리기
-                        }
+                        ShopData.Instance.Discard(cardUI.Card);
                     };
                     cardUI.OnCardEntered += (cardUI) => { cardUI.CardBig(); }; 
                     cardUI.OnCardExited += (cardUI) => { cardUI.CardSmall(); };
