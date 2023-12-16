@@ -99,7 +99,7 @@ public class LibraryUI : MonoBehaviour
     {
         for (int i = 0; i < deckDisplayer.transform.childCount; i++)
         {
-            AssetLoader.Instance.Destroy(deckDisplayer.transform.GetChild(i).gameObject);
+            deckDisplayer.transform.GetChild(i).gameObject.SetActive(false);
         }
     }
 
@@ -109,15 +109,17 @@ public class LibraryUI : MonoBehaviour
         ClearCards(); //전에 표시되던 카드 제거
 
         int start = currentPage * cardsPerPage;
-        int end = Math.Min(showedCardList.Count, start + cardsPerPage); //시작페이지와 끝페이지
+        int end = start + cardsPerPage; //페이지 시작과 시작 + 8개
 
         for (int i = start; i < end; i++)
         {
-
             CardUI cardUI;
             BattleUI battleUI;
 
-            cardUI = AssetLoader.Instance.Instantiate("Prefabs/UI/CardUI", deckDisplayer.transform).GetComponent<CardUI>();
+            if (i > Math.Min(showedCardList.Count - 1, start + cardsPerPage)) continue;
+
+            cardUI = deckDisplayer.transform.GetChild(i - start).GetComponent<CardUI>();
+            cardUI.gameObject.SetActive(true);  
             cardUI.ShowCardData(showedCardList[i]); //카드를 소환
 
             switch (libraryMode)
@@ -135,7 +137,7 @@ public class LibraryUI : MonoBehaviour
                     cardUI.OnCardClicked += (cardUI) => //카드 클릭 시 하단의 이벤트 발동하도록 등록
                     {
                         int newMoney = PlayerData.Instance.Money - ShopData.Instance.DiscardCost;
-                        if (newMoney > 0) //돈이 남은 경우만
+                        if (newMoney >= 0) //돈이 남은 경우만
                         {
                             PlayerData.Instance.Deck.Remove(cardUI.Card); //해당 카드를 버리기
                             PlayerData.Instance.Money = newMoney; //제거 비용만큼 플레이어 돈에서 차감하기
