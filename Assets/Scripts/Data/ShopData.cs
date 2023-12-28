@@ -84,6 +84,7 @@ public class ShopData : Singleton<ShopData>
 
     }
 
+    //다른 Shop 기능 오브젝트를 만들어서 옮기는 게 나을 것 같긴 한데...
     public void Purchase(CardStruct card) //해당 카드 구매
     {
 

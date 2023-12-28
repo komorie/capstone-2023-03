@@ -86,13 +86,6 @@ public class PlayerData : Singleton<PlayerData>
         DontDestroyOnLoad(this);
     }
 
-    //다른 데이터 변경은 자동으로 감지되므로 덱이 바뀌었을 때만 호출하기
-    public void NotifyDataChange()
-    {
-        OnDataChange?.Invoke();
-    }
-
-
     public void InitPlayerData()
     {
         //초기 데이터 설정 함수
