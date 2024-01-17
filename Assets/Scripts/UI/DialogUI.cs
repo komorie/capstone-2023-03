@@ -13,7 +13,7 @@ using System.Collections;
 
 public class DialogUI : MonoBehaviour, IPointerDownHandler
 {
-    private bool isPrinting = false; // 추가된 변수
+    private bool isPrinting = false; // 출력 중
     private int dialogIndex;
     private int lineCount;
     private LineStruct currentLine;
@@ -30,7 +30,7 @@ public class DialogUI : MonoBehaviour, IPointerDownHandler
     private void OnEnable()
     {
         //엔터로 대화창 진행하는 함수 실행하게 이벤트 등록
-        //인풋시스템에 이벤트 함수 등록할 때, 람다로 등록하지 않는 게 좋을 듯. 왠지는 모르겠는데 중복 실행 오류난다
+        //인풋시스템에 이벤트 함수 등록할 때, 람다로 등록하지 않는 게 좋을 듯. 왠지는 모르겠는데 중복 실행 오류
         InputActions.keyActions.UI.Check.started += NextDialogByCheck;
     }
 

@@ -12,14 +12,13 @@ public enum LibraryMode
     Deck, //플레이어 덱 보여주기 모드
     EventDiscard, //플레이어 덱 보여주기 + 이벤트로 카드 버리기 모드
     ShopDiscard, //플레이어 덱 보여주기 + 상점에서 카드 버리기 모드
-    Battle_Deck, //배틀 중에 남은 덱 보여주기
-    Battle_Trash, //배틀 중에 버린 카드 보여주기
-    Battle_Trash_Hand, // 배틀 중에 손패 보여주기 + 버리기
-    Battle_Use_Hand // 배틀 중에 손패 보여주기 + 한 장 선택
+    BattleDeck, //배틀 중에 남은 덱 보여주기
+    BattleTrash, //배틀 중에 버린 카드 보여주기
+    BattleTrashHand, // 배틀 중에 손패 보여주기 + 버리기
+    BattleUseHand // 배틀 중에 손패 보여주기 + 한 장 선택
 }
 
 //C# LInq 사용: 데이터 쿼리를 C#에서 스크립트로 사용할 수 있도록 하는 기술.
-//배열 및 다른 컬렉션에서 쉽게 원하는 구역만 가져올 수 있음.
 
 public class LibraryUI : MonoBehaviour
 {
@@ -77,16 +76,16 @@ public class LibraryUI : MonoBehaviour
             case LibraryMode.ShopDiscard: //현재 덱 보여주기 + 이벤트로 클릭하는 만큼 버리기 + 버리든 말든 자유
                 showedCardList = PlayerData.Instance.Deck;
                 break;
-            case LibraryMode.Battle_Deck: //배틀 중에 남은 덱 보여주기
+            case LibraryMode.BattleDeck: //배틀 중에 남은 덱 보여주기
                 showedCardList = BattleData.Instance.Deck;
                 break;
-            case LibraryMode.Battle_Trash: //배틀 중에 버린 카드 보여주기
+            case LibraryMode.BattleTrash: //배틀 중에 버린 카드 보여주기
                 showedCardList = BattleData.Instance.Trash;
                 break;
-            case LibraryMode.Battle_Trash_Hand: //배틀 중에 손패 보여주기 + 버리기
+            case LibraryMode.BattleTrashHand: //배틀 중에 손패 보여주기 + 버리기
                 showedCardList = BattleData.Instance.Hand;
                 break;
-            case LibraryMode.Battle_Use_Hand: //배틀 중에 손패 보여주기 + 한 장 선택
+            case LibraryMode.BattleUseHand: //배틀 중에 손패 보여주기 + 한 장 선택
                 showedCardList = BattleData.Instance.Hand;
                 break;
         }
@@ -111,16 +110,16 @@ public class LibraryUI : MonoBehaviour
         int start = currentPage * cardsPerPage;
         int end = start + cardsPerPage; //페이지 시작과 시작 + 8개
 
-        for (int i = start; i < end; i++)
+        for (int now = start; now < end; now++)
         {
             CardUI cardUI;
             BattleUI battleUI;
 
-            if (i > Math.Min(showedCardList.Count - 1, start + cardsPerPage)) continue;
+            if (now > Math.Min(showedCardList.Count - 1, start + cardsPerPage)) continue;
 
-            cardUI = deckDisplayer.transform.GetChild(i - start).GetComponent<CardUI>();
+            cardUI = deckDisplayer.transform.GetChild(now - start).GetComponent<CardUI>();
             cardUI.gameObject.SetActive(true);  
-            cardUI.ShowCardData(showedCardList[i]); //카드를 소환
+            cardUI.ShowCardData(showedCardList[now]); //해당 카드를 보여주기
 
             switch (libraryMode)
             {
@@ -141,7 +140,7 @@ public class LibraryUI : MonoBehaviour
                     cardUI.OnCardEntered += (cardUI) => { cardUI.CardBig(); }; 
                     cardUI.OnCardExited += (cardUI) => { cardUI.CardSmall(); };
                     break;
-                case LibraryMode.Battle_Trash_Hand: //배틀 중에 손패 카드 보여주기 + 카드 버리기 1회
+                case LibraryMode.BattleTrashHand: //배틀 중에 손패 카드 보여주기 + 카드 버리기 1회
                     battleUI = GameObject.Find("UIRoot").transform.GetChild(2).GetComponent<BattleUI>();
                     cardUI.OnCardClicked += (cardUI) => 
                     {
@@ -151,7 +150,7 @@ public class LibraryUI : MonoBehaviour
                     cardUI.OnCardEntered += (cardUI) => { cardUI.CardBig(); }; 
                     cardUI.OnCardExited += (cardUI) => { cardUI.CardSmall(); };
                     break;
-                case LibraryMode.Battle_Use_Hand: //배틀 중에 손패 카드 보여주기 + 한 장 선택
+                case LibraryMode.BattleUseHand: //배틀 중에 손패 카드 보여주기 + 한 장 선택
                     battleUI = GameObject.Find("UIRoot").transform.GetChild(2).GetComponent<BattleUI>();
                     cardUI.OnCardClicked += (cardUI) => 
                     {

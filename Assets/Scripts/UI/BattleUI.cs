@@ -130,14 +130,14 @@ public class BattleUI : MonoBehaviour
     {
         UIManager.Instance.ShowUI("LibraryUI")
             .GetComponent<LibraryUI>()
-            .Init(LibraryMode.Battle_Trash);
+            .Init(LibraryMode.BattleTrash);
     }
 
     public void DeckClick()
     {
         UIManager.Instance.ShowUI("LibraryUI")
             .GetComponent<LibraryUI>()
-            .Init(LibraryMode.Battle_Deck);
+            .Init(LibraryMode.BattleDeck);
     }
 
     //Hand UI�� �ڽ��� ���ڿ� ���� Hand UI�� Horizontal Layout Group�� Spacing�� ����

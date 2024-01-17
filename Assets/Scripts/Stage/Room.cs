@@ -30,7 +30,7 @@ public class Room : MonoBehaviour
             {
                 IsCleared = true;
                 ActivateDoors(true);
-                StageManager.Instance.NotifyRoomClear();
+                Stage.Instance.NotifyRoomClear();
             }
         }
     }
@@ -42,7 +42,7 @@ public class Room : MonoBehaviour
         {
             IsCleared = true;
             ActivateDoors(true);
-            StageManager.Instance.NotifyRoomClear();
+            Stage.Instance.NotifyRoomClear();
         }
     }
 
@@ -66,7 +66,7 @@ public class Room : MonoBehaviour
             case Define.EventType.Enemy:
                 Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/EnemySymbol", transform).AddComponent<EnemySymbol>();   
                 int choice = Random.Range(0, 2); //일반 잡몹 대화문일지 보스 잡몹 대화문일지
-                offset = choice == 0 ? 0 : (int)StageManager.Instance.StageTheme;
+                offset = choice == 0 ? 0 : (int)Stage.Instance.StageTheme;
                 Symbol.Init(offset, type); 
                 break;
             case Define.EventType.Rest:
@@ -84,7 +84,7 @@ public class Room : MonoBehaviour
                 break;
             case Define.EventType.Boss:
                 Symbol = AssetLoader.Instance.Instantiate($"Prefabs/RoomSymbol/BossSymbol", transform).AddComponent<BossSymbol>();
-                Symbol.Init(Define.BOSS_INDEX + (int)StageManager.Instance.StageTheme - 1, type);
+                Symbol.Init(Define.BOSS_INDEX + (int)Stage.Instance.StageTheme - 1, type);
                 break;
             default:
                 return;

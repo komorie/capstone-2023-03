@@ -26,7 +26,7 @@ public class SettingData : Singleton<SettingData>
         File.WriteAllText(filePath, jsonData);
     }
 
-    public void LoadSettingData() //런타임으로 저장/불러오기를 하는 데이터이므로 GameDataLoader 사용 X
+    public void LoadSettingData() 
     {
         Debug.Log("Setting Data Load");
         string filePath = Path.Combine(Application.persistentDataPath, "Setting.json");

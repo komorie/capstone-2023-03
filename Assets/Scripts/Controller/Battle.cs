@@ -27,7 +27,7 @@ public class Battle : MonoBehaviour
 
         if (BattleData.Instance.Hand.Count >= BattleData.Instance.MaxHand)
         {
-            UIManager.Instance.ShowUI("LibraryUI").GetComponent<LibraryUI>().Init(LibraryMode.Battle_Trash_Hand);
+            UIManager.Instance.ShowUI("LibraryUI").GetComponent<LibraryUI>().Init(LibraryMode.BattleTrashHand);
         }
         int randomIndex = Random.Range(0, BattleData.Instance.Deck.Count);
         BattleData.Instance.Hand.Add(BattleData.Instance.Deck[randomIndex]);
