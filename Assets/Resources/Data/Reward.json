@@ -1,0 +1,9 @@
+[
+  { "index": 1, "viewers": 40, "money": 50 },
+  { "index": 2, "viewers": 70, "money": 80 },
+  { "index": 3, "viewers": 100, "money": 110 },
+  { "index": 101, "viewers": 100, "money": 100 },
+  { "index": 102, "viewers": 150, "money": 160 },
+  { "index": 103, "viewers": 200, "money": 220 },
+  { "index": 104, "viewers": 0, "money": 0 }
+]
