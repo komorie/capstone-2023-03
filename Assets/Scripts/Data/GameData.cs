@@ -44,20 +44,6 @@ public class GameData : Singleton<GameData>
         isLoaded = true;
     }
 
-    //대화 목록에서 특정한 줄 불러오기
-    public LineStruct GetLine(int index, int lineIndex)
-    {
-        if (lineIndex >= DialogDic[index].Count)
-        {
-            return null;
-        }
-        else
-        {
-            return DialogDic[index][lineIndex];
-        }
-    }
-
-
     //스프라이트 전부 로드
     public void LoadSpriteDic()
     {
@@ -68,75 +54,4 @@ public class GameData : Singleton<GameData>
             SpriteDic.Add(sprite.name, sprite);
         }
     }
-
-
-    //일반화 전 코드들
-   /* //카드 리스트 로드
-    public void LoadCardList()
-    {
-        Debug.Log("카드 리스트 로드");
-        string filePath = "Data/CardLibrary";
-        TextAsset jsonData = AssetLoader.Instance.Load<TextAsset>(filePath);
-        if (jsonData != null)
-        {
-            CardList = JsonMapper.ToObject<List<CardStruct>>(jsonData.text);
-        }
-        else
-        {
-            Debug.LogError("Cannot find file at " + filePath);
-        }
-    }
-
-    public void LoadRewardDic()
-    {
-        Debug.Log("보상 리스트 로드");
-        string filePath = "Data/Reward";
-        TextAsset jsonData = AssetLoader.Instance.Load<TextAsset>(filePath);
-        if (jsonData != null) {
-            string jsonString = jsonData.text;
-            JsonData rewardData = JsonMapper.ToObject(jsonString);
-
-            for (int i = 0; i < rewardData.Count; i++)
-            {
-                int index = (int)rewardData[i]["index"];
-
-                RewardStruct reward = new RewardStruct();
-                reward.money = (int)rewardData[i]["money"];
-                reward.viewers = (int)rewardData[i]["viewers"];
-                RewardDic.Add(index, reward);
-            }
-        }
-    }
-
-    //대화 로그 전체 로드
-    public void LoadDialogDic()
-    {
-        Debug.Log("다이얼로그 리스트 로드");
-        string filePath = "Data/Dialog";
-        TextAsset jsonData = AssetLoader.Instance.Load<TextAsset>(filePath);
-        if (jsonData != null)
-        {
-            string jsonString = jsonData.text;
-            JsonData dialogData = JsonMapper.ToObject(jsonString);
-            for(int i = 0; i < dialogData.Count; i++)
-            {
-                int index = (int)dialogData[i]["index"];
-
-                List<LineStruct> lines;
-                if (!DialogDic.TryGetValue(index, out lines)) //index가 같으면 한 대사 묶음으로 판단하고 index를 키로 갖는 리스트 저장.
-                {
-                    lines = new List<LineStruct>(); 
-                    DialogDic.Add(index, lines);
-                }
-
-
-                LineStruct line = new LineStruct(); //딕셔너리의 리스트에 저장할 한 줄 단위의 대화
-                line.portrait = dialogData[i]["portrait"]?.ToString();
-                line.name = dialogData[i]["name"]?.ToString();
-                line.line = dialogData[i]["line"].ToString();
-
-                lines.Add(line);
-            }
-        }
-    }*/
 }

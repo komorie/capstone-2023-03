@@ -17,7 +17,7 @@ public class BossSymbol : RoomSymbol
         GameObject Room = transform.parent.gameObject;
         SoundManager.Instance.Play("Sounds/BattleBgm", Sound.Bgm);
         UIManager.Instance.ShowUI("BackGroundUI");
-        UIManager.Instance.ShowUI("BattleUI", false).GetComponent<BattleUI>().Init(index, Room.name, StageManager.Instance.StageLevel);
+        UIManager.Instance.ShowUI("BattleUI", false).GetComponent<BattleUI>().Init(index, Room.name, Stage.Instance.StageLevel);
         BattleData.Instance.LoadData();
     }
 
@@ -25,7 +25,7 @@ public class BossSymbol : RoomSymbol
     public void AfterFight()
     {
         //최종 스테이지면 그냥 종료
-        if (StageManager.Instance.StageTheme == Define.ThemeType.Final)
+        if (Stage.Instance.StageTheme == Define.ThemeType.Final)
         {
             UIManager.Instance.ShowUI("DialogUI")
                 .GetComponent<DialogUI>()
@@ -55,8 +55,8 @@ public class BossSymbol : RoomSymbol
     {
 
         //스탯을 ... 만큼 증가
-        PlayerData.Instance.Money += GameData.Instance.RewardDic[StageManager.Instance.StageLevel + Define.BOSS_INDEX].money; 
-        PlayerData.Instance.Viewers += GameData.Instance.RewardDic[StageManager.Instance.StageLevel + Define.BOSS_INDEX].viewers;
+        PlayerData.Instance.Money += GameData.Instance.RewardDic[Stage.Instance.StageLevel + Define.BOSS_INDEX].money; 
+        PlayerData.Instance.Viewers += GameData.Instance.RewardDic[Stage.Instance.StageLevel + Define.BOSS_INDEX].viewers;
 
         //보상 카드 UI 닫을 시, TalkEnd 호출
         CardRewardUI cardSelectUI = UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardRewardUI>();
@@ -76,8 +76,8 @@ public class BossSymbol : RoomSymbol
     public void NegotiateEnd() //영입 후 호출
     {
         //스탯을 ... 만큼 증가
-        PlayerData.Instance.Money += GameData.Instance.RewardDic[StageManager.Instance.StageLevel + Define.BOSS_INDEX].money / 2;
-        PlayerData.Instance.Viewers += GameData.Instance.RewardDic[StageManager.Instance.StageLevel + Define.BOSS_INDEX].viewers / 2;
+        PlayerData.Instance.Money += GameData.Instance.RewardDic[Stage.Instance.StageLevel + Define.BOSS_INDEX].money / 2;
+        PlayerData.Instance.Viewers += GameData.Instance.RewardDic[Stage.Instance.StageLevel + Define.BOSS_INDEX].viewers / 2;
 
         //보상 카드 UI 닫을 시, TalkEnd 호출
         CardRewardUI cardSelectUI = UIManager.Instance.ShowUI("CardSelectUI").GetComponent<CardRewardUI>();
@@ -94,6 +94,6 @@ public class BossSymbol : RoomSymbol
                 .GetComponent<CardRewardUI>()
                 .LevelUpReward();
         }
-        StageManager.Instance.NotifyLevelClear();
+        Stage.Instance.NotifyLevelClear();
     }
 }

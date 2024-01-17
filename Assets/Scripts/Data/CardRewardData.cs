@@ -141,7 +141,7 @@ public class CardRewardData : Singleton<CardRewardData> //º¸»ó È­¸é¿¡ ³ª¿À´Â Ä«µ
             //¿¹½Ã·Î, 3½ºÅ×ÀÌÁö¸é mob3 Å¸ÀÔÀÇ Ä«µåµé¸¸ °¡Á®¿À°Ô µÈ´Ù.
             case 0:
                 NegoCardsPool = GameData.Instance.CardList
-                    .Where(card => card.type == $"Mob{StageManager.Instance.StageLevel}")
+                    .Where(card => card.type == $"Mob{Stage.Instance.StageLevel}")
                     .ToList();
                 break;
             //±× ¿ÜÀÎ °æ¿ì, index´Â ÇöÀç ThemeÀÇ ¹øÈ£¿Í °°´Ù. Theme¿¡ ÇØ´çÇÏ´Â EnumÀÇ ÅØ½ºÆ®(¿¹¸¦ µé¾î index°¡ 1ÀÌ¸é Define.ThemeType.Pirate¿Í ´ëÀÀ)
@@ -149,7 +149,7 @@ public class CardRewardData : Singleton<CardRewardData> //º¸»ó È­¸é¿¡ ³ª¿À´Â Ä«µ
             //cardÀÇ typeÀÌ Pirate1ÀÎ Ä«µåµéÀ» °¡Á®¿Í¼­ Ç®¿¡ Ãß°¡ÇÑ´Ù.
             default:
                 NegoCardsPool = GameData.Instance.CardList
-                    .Where(card => card.type == $"{StageManager.Instance.StageTheme}{StageManager.Instance.StageLevel}")
+                    .Where(card => card.type == $"{Stage.Instance.StageTheme}{Stage.Instance.StageLevel}")
                     .ToList();
                 break;
         }
@@ -163,7 +163,7 @@ public class CardRewardData : Singleton<CardRewardData> //º¸»ó È­¸é¿¡ ³ª¿À´Â Ä«µ
         Rewards.Clear();
 
         //Å¸ÀÔÀÌ º¸½ºÀÎ Ä«µå Áß, ¿¡³Ê¹ÌÀÇ ÀÎµ¦½º¹øÂ°ÀÇ Ä«µå¸¦ °¡Á®¿Â´Ù.
-        Rewards.Add(GameData.Instance.CardList.Where(card => card.type == $"{StageManager.Instance.StageTheme}Boss").ElementAtOrDefault(0));
+        Rewards.Add(GameData.Instance.CardList.Where(card => card.type == $"{Stage.Instance.StageTheme}Boss").ElementAtOrDefault(0));
     }
 
     //ÀÌº¥Æ® Ä«µå È¹µæ º¸»óÀ¸·Î ¶ç¿ì´Â °æ¿ì È£Ãâ
@@ -221,10 +221,10 @@ public class CardRewardData : Singleton<CardRewardData> //º¸»ó È­¸é¿¡ ³ª¿À´Â Ä«µ
         Rewards.Clear();
 
         //Å¸ÀÔÀÌ ÆÄÆ®³ÊÀÎ Ä«µå Áß, ÇöÀç ½ºÅ×ÀÌÁö¿¡ ¸Â´Â Ä«µå¸¦ °¡Á®¿À±â.
-        Rewards.Add(GameData.Instance.CardList.Where(card => card.type == $"Partner{StageManager.Instance.StageLevel}").ElementAtOrDefault(0));
+        Rewards.Add(GameData.Instance.CardList.Where(card => card.type == $"Partner{Stage.Instance.StageLevel}").ElementAtOrDefault(0));
 
         //µ¿·á Ä«µå È¹µæÇÑ°É·Î ¼³Á¤
-        PlayerData.Instance.HasPartner[StageManager.Instance.StageLevel - 1] = true;
+        PlayerData.Instance.HasPartner[Stage.Instance.StageLevel - 1] = true;
     }
 
 

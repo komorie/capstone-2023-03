@@ -11,9 +11,9 @@ public class EventSymbol : RoomSymbol
 
         if(index == 307) //동료 획득 인덱스가 나오면
         {
-            if(PlayerData.Instance.HasPartner[StageManager.Instance.StageLevel - 1] == false) //현재 스테이지서 얻을 수 있는 동료를 획득 안한 경우에만 카드 획득
+            if(PlayerData.Instance.HasPartner[Stage.Instance.StageLevel - 1] == false) //현재 스테이지서 얻을 수 있는 동료를 획득 안한 경우에만 카드 획득
             {
-                index = 307 + StageManager.Instance.StageLevel - 1;
+                index = 307 + Stage.Instance.StageLevel - 1;
             }
             else
             {
@@ -38,8 +38,8 @@ public class EventSymbol : RoomSymbol
                 int takeViewers; //받을 애청자
                 int giveMoney; //줄 돈
 
-                takeViewers = GameData.Instance.RewardDic[StageManager.Instance.StageLevel].viewers * 2;
-                giveMoney = GameData.Instance.RewardDic[StageManager.Instance.StageLevel].money; //대충 현 스테이지의 보상만큼 가져옴
+                takeViewers = GameData.Instance.RewardDic[Stage.Instance.StageLevel].viewers * 2;
+                giveMoney = GameData.Instance.RewardDic[Stage.Instance.StageLevel].money; //대충 현 스테이지의 보상만큼 가져옴
 
                 if(giveMoney <= PlayerData.Instance.Money) //돈 안부족하면 선택창 띄우고 교환 실행
                 {
@@ -65,8 +65,8 @@ public class EventSymbol : RoomSymbol
                 int giveViewers;
                 int takeMoney;
 
-                giveViewers = GameData.Instance.RewardDic[StageManager.Instance.StageLevel].viewers;
-                takeMoney = GameData.Instance.RewardDic[StageManager.Instance.StageLevel].money * 2;
+                giveViewers = GameData.Instance.RewardDic[Stage.Instance.StageLevel].viewers;
+                takeMoney = GameData.Instance.RewardDic[Stage.Instance.StageLevel].money * 2;
 
                 if (giveViewers <= PlayerData.Instance.Viewers) //애청자 안부족하면 선택창 띄우고 교환 실행
                 {
