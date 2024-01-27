@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DataStructs
 {
-    [System.Serializable]
+    [Serializable]
     public class CardStruct
     {
         public int index;
@@ -22,7 +22,7 @@ namespace DataStructs
         public int special_stat; //특수효과 수치
     }
 
-    [System.Serializable]
+    [Serializable]
     public class LineStruct
     {
         public int index;
@@ -31,7 +31,7 @@ namespace DataStructs
         public string line;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class SettingStruct
     {
         public int index;
@@ -40,7 +40,7 @@ namespace DataStructs
         public int effect;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class RewardStruct
     {
         public int index;
@@ -48,7 +48,7 @@ namespace DataStructs
         public int money;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class EnemyStruct
     {
         public int index;
