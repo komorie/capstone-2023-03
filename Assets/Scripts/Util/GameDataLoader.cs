@@ -64,7 +64,7 @@ public static class GameDataLoader
 
                 List<T> items;
 
-                if (!dictionary.TryGetValue(index, out items)) // index가 같으면 한 대사 묶음으로 판단하고 index를 키로 갖는 리스트 저장.
+                if (!dictionary.TryGetValue(index, out items)) // index가 같으면 한 대사 묶음으로 판단하고 index를 키로 갖는 리스트에 추가.
                 {
                     items = new List<T>();
                     dictionary.Add(index, items);
@@ -78,7 +78,6 @@ public static class GameDataLoader
         }
         else
         {
-            Debug.LogError("Cannot find file at " + filePath);
             dictionary = null;
         }
     }
